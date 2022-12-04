@@ -1,0 +1,17 @@
+{
+    "name": "customberg/customberg-php",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Customberg\\PHP\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andrei Telteu",
+            "email": "andrei@telteu.ro"
+        }
+    ],
+    "require": {}
+}
