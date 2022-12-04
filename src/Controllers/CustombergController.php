@@ -3,6 +3,7 @@
 namespace Customberg\PHP\Controllers;
 
 use App\Http\Controllers\Controller;
+use Customberg\PHP\Customberg;
 use Illuminate\Http\Request;
 
 class CustombergController extends Controller
@@ -13,7 +14,7 @@ class CustombergController extends Controller
         $view = preg_replace('/[^a-zA-Z0-9\-\.]*/', '', $request->slug);
 
         // get multilanguage fields
-        $allBocks = get_tm_blocks();
+        $allBocks = app(Customberg::class)->getBlocks();
         $multilanguageFields = [];
         $repeatableFields = [];
         foreach ($allBocks as $block_data) {

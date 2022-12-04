@@ -8,7 +8,41 @@ class Customberg
 {
     use Macroable;
 
-    public static function getBlocks()
+    protected static $instance;
+    protected $config;
+
+    public function __construct($config = null)
+    {
+        // TODO: move all configs here, so you can use this plugin in any type of project without laravel
+        $this->config = $config;
+        return $this;
+    }
+
+    public static function getInstance($config = null): Customberg
+    {
+        if (!isset(static::$instance)) {
+            static::$instance = new Customberg($config);
+        }
+        return static::$instance;
+    }
+
+    public static function __callStatic($method, $args = [])
+    {
+        if (substr($method, 0, 1) == '$') {
+            $method = substr($method, 1);
+        }
+        if ($method == 'instance') {
+            return static::$instance;
+        }
+        return call_user_func_array([static::getInstance(), $method], $args);
+    }
+
+    public function getConfig()
+    {
+        return $this->config;
+    }
+
+    public function getBlocks()
     {
         $blocks = [];
         foreach (glob(app_path('Blocks/*.php')) as $filename) {
@@ -21,11 +55,11 @@ class Customberg
         return $blocks;
     }
 
-    public static function loadBlocks()
+    public function loadBlocks()
     {
         $init = '';
         $langs = array_keys(config('customberg.languages'));
-        foreach (self::getBlocks() as $block) {
+        foreach ($this->getBlocks() as $block) {
             $block['multilanguage'] = false;
             $calculateAttributes = function ($fields, $calculateAttributes) use ($langs, &$block) {
                 $attributes = [];
@@ -78,7 +112,7 @@ class Customberg
         return $init;
     }
 
-    public static function renderBlocks($html, $lang = null)
+    public function renderBlocks($html, $lang = null)
     {
         $activeLang = $lang ? $lang : app()->getLocale();
 
@@ -94,7 +128,7 @@ class Customberg
         preg_match_all('/\<\!\-\-\s*wp\:([^\ ]+)\s*(.*)\s+\/?\-\-\>/i', $html, $blocks_found, PREG_SET_ORDER);
 
         // get multilanguage fields
-        $allBocks = self::getBlocks();
+        $allBocks = $this->getBlocks();
         $multilanguageFields = [];
         $repeatableFields = [];
         foreach ($allBocks as $block_data) {

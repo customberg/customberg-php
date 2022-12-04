@@ -18,7 +18,17 @@ class CustombergServiceProvider extends PackageServiceProvider
         $package
             ->name('customberg')
             ->hasConfigFile()
+            ->hasAssets()
             ->hasViews()
-            ->hasCommand(MakeBlock::class);
+            ->hasRoute('customberg')
+            ->hasCommands([MakeBlock::class]);
+    }
+
+    public function packageRegistered()
+    {
+        $this->app->singleton(Customberg::class, function () {
+            $config = config('customberg');
+            return Customberg::getInstance($config);
+        });
     }
 }
