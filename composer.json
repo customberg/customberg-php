@@ -19,7 +19,8 @@
         "spatie/laravel-package-tools": "^1.13.0",
         "illuminate/support": "^9.0",
         "illuminate/contracts": "^9.0",
-        "spatie/macroable": "^2.0"
+        "spatie/macroable": "^2.0",
+        "van-ons/laraberg": "^2.0.0"
     },
     "extra": {
         "laravel": {
