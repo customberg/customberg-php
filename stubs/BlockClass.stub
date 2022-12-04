@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Blocks;
+
+class BlockClass
+{
+    public static function render()
+    {
+        return [
+            'name' => 'BlockClass',
+            'slug' => '%slug%',
+            'icon' => 'universal-access-alt',
+            'fields' => [
+                // supported types are:
+                // text, rich_text, color, upload_image
+                // repeatable ( 'fields' => [  ] )
+                // blocks ( 'allowed' => ['core/paragraph', 'core/list'] )
+                // select (
+                //     'placeholder' => 'string',
+                //     'multiple' => true/false,
+                //     'disabled' => true/false,
+                //     'default' => string or array,
+                //     'options' => array with key => value,
+                // )
+
+                [
+                    'name' => 'title',
+                    'label' => 'Titlu',
+                    'type' => 'text',
+                ],
+            ],
+        ];
+    }
+}

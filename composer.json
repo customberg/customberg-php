@@ -2,6 +2,7 @@
     "name": "customberg/customberg-php",
     "type": "library",
     "license": "MIT",
+    "homepage": "https://github.com/customberg/customberg-php",
     "autoload": {
         "psr-4": {
             "Customberg\\PHP\\": "src/"
@@ -13,5 +14,26 @@
             "email": "andrei@telteu.ro"
         }
     ],
-    "require": {}
+    "require": {
+        "php": "^8.0",
+        "spatie/laravel-package-tools": "^1.13.0",
+        "illuminate/contracts": "^9.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Customberg\\PHP\\CustombergServiceProvider"
+            ],
+            "aliases": {
+                "Customberg": "Customberg\\PHP\\Customberg"
+            }
+        }
+    },
+    "keywords": [
+        "laravel",
+        "customberg",
+        "laraberg",
+        "gutenberg",
+        "block-editor"
+    ]
 }
