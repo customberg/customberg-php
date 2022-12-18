@@ -20,7 +20,7 @@ services:
         restart: unless-stopped
         environment:
             DB_CONNECTION: sqlite
-            DB_DATABASE: ./database.sqlite
+            DB_DATABASE: /app/database.sqlite
             LOG_CHANNEL: stderr
         volumes:
             - .:/app
