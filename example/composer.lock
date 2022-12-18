@@ -374,7 +374,7 @@
             "dist": {
                 "type": "path",
                 "url": "..",
-                "reference": "aef37997b22a348578d29eec42d492c9c2e1ff81"
+                "reference": "d1c0cc486645781bfbe25560a3591e19f4e715b8"
             },
             "require": {
                 "illuminate/contracts": "^9.0",
