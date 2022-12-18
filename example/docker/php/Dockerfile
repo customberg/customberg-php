@@ -9,7 +9,8 @@ RUN apt-get update; \
     add-apt-repository ppa:openswoole/ppa -y; \
     apt-get update; \
     apt-get -y --no-install-recommends install \
-        php8.1-gd; \
+        php8.1-gd \
+        php8.1-sqlite3; \
     apt-get clean; \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
