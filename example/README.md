@@ -10,10 +10,10 @@ docker-compose stop
 docker-compose start
 
 # install dependencies
-docker-compose exec php su app -c 'composer install'
+docker-compose exec php su app -c 'cd example; composer install'
 
-# run migrations and seeders
-docker-compose exec php su app -c 'cd example; php artisan migrate:fresh --seed'
+# generate app key
+docker-compose exec php su app -c 'cd example; cp .env.example .env; php artisan key:generate'
 
 # make storage link
 docker-compose exec nginx su app -c 'cd /app/example/public/; ln -s ../storage/app/public storage'
