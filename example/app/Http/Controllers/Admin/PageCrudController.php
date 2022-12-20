@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\PageRequest;
+use App\Models\Page;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -26,7 +26,7 @@ class PageCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Page::class);
+        CRUD::setModel(Page::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/page');
         CRUD::setEntityNameStrings('page', 'pages');
     }
@@ -39,12 +39,8 @@ class PageCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
-        CRUD::column('slug');
         CRUD::column('title');
         CRUD::column('status');
-        CRUD::column('content');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -61,10 +57,21 @@ class PageCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::field('slug');
-        CRUD::field('title');
-        CRUD::field('status');
-        CRUD::field('content');
+        CRUD::setCreateContentClass('col-md-12 bold-labels');
+        CRUD::setUpdateContentClass('col-md-12 bold-labels');
+
+        CRUD::field('title')->wrapperAttributes(['class' => 'form-group col-md-6']);
+        CRUD::field('slug')->wrapperAttributes(['class' => 'form-group col-md-4']);
+        CRUD::field('status')
+            ->label('Status')
+            ->type('select_from_array')
+            ->options(Page::STATUSES)
+            ->wrapperAttributes(['class' => 'form-group col-md-2']);
+
+        CRUD::field('content')
+            ->label('Page')
+            ->type('customberg')
+            ->view_namespace('customberg::');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

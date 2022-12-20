@@ -11,19 +11,27 @@ class Customberg
     protected static $instance;
     protected $config;
 
-    public function __construct($config = null)
+    public function __construct()
     {
-        // TODO: move all configs here, so you can use this plugin in any type of project without laravel
-        $this->config = $config;
         return $this;
     }
 
-    public static function getInstance($config = null): Customberg
+    public static function getInstance(): Customberg
     {
         if (!isset(static::$instance)) {
-            static::$instance = new Customberg($config);
+            static::$instance = new Customberg();
         }
         return static::$instance;
+    }
+
+    public function setConfig($config = null)
+    {
+        $this->config = $config;
+        return $this;
+    }
+    public function getConfig()
+    {
+        return $this->config;
     }
 
     public static function __callStatic($method, $args = [])
@@ -35,11 +43,6 @@ class Customberg
             return static::$instance;
         }
         return call_user_func_array([static::getInstance(), $method], $args);
-    }
-
-    public function getConfig()
-    {
-        return $this->config;
     }
 
     public function getBlocks()
