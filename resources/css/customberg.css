@@ -1,0 +1,44 @@
+
+.customberg-fields .customberg-field-select input {
+    border-color: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+.customberg-fields .customberg-field-rich-text .rich-text {
+    position: relative;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: all 150ms ease-in-out;
+}
+.customberg-fields .customberg-field-rich-text .rich-text.focus-visible {
+    border-color: #2684ff;
+}
+.customberg-fields .customberg-field-rich-text .rich-text p {
+    padding: 0;
+}
+.components-popover:not(.is-without-arrow)::before {
+    border-color: #c3c3c3;
+}
+
+.customberg-bt-spinner {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 4px solid var(--light);
+    border-top-color: var(--primary);
+    -webkit-animation: 1s customberg-bt-spinner-animation linear infinite;
+    animation: 1s customberg-bt-spinner-animation linear infinite;
+}
+@keyframes customberg-bt-spinner-animation {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}

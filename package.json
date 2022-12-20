@@ -1,0 +1,19 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "@babel/preset-react": "^7.18.6",
+        "laravel-vite-plugin": "^0.6.0",
+        "vite": "^3.0.0"
+    },
+    "dependencies": {
+        "@vitejs/plugin-react": "^2.2.0",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-select": "^5.6.1",
+        "vite-plugin-external": "^1.2.7"
+    }
+}
