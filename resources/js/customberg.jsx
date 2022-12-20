@@ -1,4 +1,9 @@
 import '../css/customberg.css';
 
-// window.Laraberg.registerCategory('Custom Blocks', 'custom-blocks');
+const { blocks } = window.Laraberg.wordpress;
+blocks.setCategories([
+    ...(blocks.getCategories() || []),
+    { title: 'Customberg', slug: 'customberg' },
+]);
+
 import './CustombergEditFields';
