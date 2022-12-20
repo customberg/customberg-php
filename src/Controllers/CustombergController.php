@@ -14,7 +14,7 @@ class CustombergController extends Controller
         $view = preg_replace('/[^a-zA-Z0-9\-\.]*/', '', $request->slug);
 
         // get multilanguage fields
-        $allBocks = app(Customberg::class)->getBlocks();
+        $allBocks = Customberg::getBlocks();
         $multilanguageFields = [];
         $repeatableFields = [];
         foreach ($allBocks as $block_data) {

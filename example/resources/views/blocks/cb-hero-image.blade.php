@@ -1,0 +1,3 @@
+
+live !!
+{{ isset($title) ? $title : '' }}

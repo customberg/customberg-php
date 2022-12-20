@@ -45,9 +45,9 @@
     
     <script>
         jQuery(document).ready(function(){
-            Laraberg.init('laraberg-plugin');
             // Laraberg.init('laraberg-plugin', { laravelFilemanager: { prefix: '/admin/laraberg-filemanager' } });
             {!! \Customberg\PHP\Customberg::loadBlocks() !!}
+            Laraberg.init('laraberg-plugin');
         });
     </script>
 @endpush

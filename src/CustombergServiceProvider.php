@@ -26,9 +26,7 @@ class CustombergServiceProvider extends PackageServiceProvider
 
     public function packageRegistered()
     {
-        $this->app->singleton(Customberg::class, function () {
-            $config = config('customberg');
-            return Customberg::getInstance()->setConfig($config);
-        });
+        $config = config('customberg');
+        Customberg::setConfig($config);
     }
 }

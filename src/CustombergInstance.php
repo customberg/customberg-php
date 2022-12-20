@@ -82,10 +82,10 @@ class CustombergInstance
             $blockJson = json_encode($block);
             $init .= "
                 if (typeof window.CustombergEditFields != 'undefined') {
-                    window.Laraberg.registerBlock('cb/{$block['slug']}', {
+                    window.Laraberg.registerBlockType('cb/{$block['slug']}', {
                         title: '{$block['name']}',
                         icon: '{$block['icon']}',
-                        category: 'custom-blocks',
+                        category: 'customberg',
                         attributes: $attributesJson,
                         edit: window.CustombergEditFields($blockJson),
                         save: function (props) { return null; },
