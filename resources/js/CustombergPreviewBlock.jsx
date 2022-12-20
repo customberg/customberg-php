@@ -37,7 +37,7 @@ function CustombergPreviewBlock(props) {
     // process preview blade view on componentdidmount
     $.ajax({
         method: 'POST',
-        url: '/admin/touch-media-gutenberg/preview',
+        url: window.CustombergConfig.routes_preview,
         data: JSON.stringify({
             slug: props.block.slug,
             attributes: props.attributes || [],

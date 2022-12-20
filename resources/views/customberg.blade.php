@@ -34,9 +34,6 @@
 @endpush
 
 @push($push_scripts)
-    {{-- <script src="https://unpkg.com/react@16.8.6/umd/react.production.min.js"></script> --}}
-    {{-- <script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.production.min.js"></script> --}}
-    
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
 
@@ -45,6 +42,9 @@
     
     <script>
         jQuery(document).ready(function(){
+            window.CustombergConfig = @json([
+                'routes_preview' => route('customberg.preview'),
+            ]);
             // Laraberg.init('laraberg-plugin', { laravelFilemanager: { prefix: '/admin/laraberg-filemanager' } });
             {!! \Customberg\PHP\Customberg::loadBlocks() !!}
             Laraberg.init('laraberg-plugin');

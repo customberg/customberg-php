@@ -2,8 +2,8 @@
 
 return [
     'routes' => [
-        'preview' => '/customberg/preview',
-        'middlewares' => ['web'],
+        'preview' => config('backpack.base.route_prefix', 'admin') . '/customberg/preview',
+        'middlewares' => ['web', config('backpack.base.middleware_key', 'admin')],
     ],
     'languages' => [
         'en' => 'English',
