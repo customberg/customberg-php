@@ -44,10 +44,29 @@
         jQuery(document).ready(function(){
             window.CustombergConfig = @json([
                 'routes_preview' => route('customberg.preview'),
+                'routes_file_upload' => route('customberg.file_upload'),
             ]);
-            // Laraberg.init('laraberg-plugin', { laravelFilemanager: { prefix: '/admin/laraberg-filemanager' } });
             {!! \Customberg\PHP\Customberg::loadBlocks() !!}
-            Laraberg.init('laraberg-plugin');
+            Laraberg.init('laraberg-plugin', {
+                mediaUpload: function (upload) {
+                    window.CustombergUploadAction(upload.filesList)
+                    .then(function (data) {
+                        var files = [];
+                        for (var i = 0; i < data.length; i++) {
+                            var name = (''+data[i]).split('/').pop();
+                            files.push({
+                                id: '',// + Date.now() + data[i],
+                                name: name,
+                                url: data[i],
+                            })
+                        }
+                        upload.onFileChange(files);
+                    })
+                    .catch(function (error) {
+                        upload.onError(error.message)
+                    });
+                },
+            });
         });
     </script>
 @endpush

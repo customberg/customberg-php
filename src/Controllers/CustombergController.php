@@ -5,6 +5,8 @@ namespace Customberg\PHP\Controllers;
 use App\Http\Controllers\Controller;
 use Customberg\PHP\Customberg;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CustombergController extends Controller
 {
@@ -67,5 +69,35 @@ class CustombergController extends Controller
             }
         }
         return view("blocks.$view", $attributes);
+    }
+
+    public function file_upload(Request $request)
+    {
+        $config = Customberg::getConfig();
+        $disk = $config['upload']['disk'] ?? 'public';
+        $path = $config['upload']['path'] ?? '';
+
+        $now = now();
+        $pathVars = [
+            '{Y}' => $now->format('Y'),
+            '{m}' => $now->format('m'),
+            '{d}' => $now->format('d'),
+        ];
+        $path = str_replace(array_keys($pathVars), array_values($pathVars), $path);
+
+        $urls = [];
+        if ($request->file('files')) {
+            foreach ($request->file('files') as $file) {
+                $ext = '.' . $file->getClientOriginalExtension();
+                $originalFileName = $fileName = Str::slug(str_replace($ext, '', $file->getClientOriginalName()));
+                $uniqueCount = 1;
+                while (Storage::disk($disk)->exists($path . '/' . $fileName . $ext)) {
+                    $fileName = $originalFileName . '-' . ++$uniqueCount;
+                }
+                $file->storeAs($path, $fileName . $ext, $disk);
+                array_push($urls, "/storage/$path/$fileName$ext");
+            }
+        }
+        return $urls;
     }
 }

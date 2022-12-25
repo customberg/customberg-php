@@ -2,14 +2,14 @@ var Er = Object.defineProperty;
 var xr = (t, e, r) => e in t ? Er(t, e, { enumerable: !0, configurable: !0, writable: !0, value: r }) : t[e] = r;
 var Le = (t, e, r) => (xr(t, typeof e != "symbol" ? e + "" : e, r), r);
 import * as V from "react";
-import B, { useState as fe, useCallback as z, useLayoutEffect as En, createContext as xt, forwardRef as xn, useContext as Xe, createElement as me, Fragment as Ne, useRef as ce, useMemo as Ae, Component as Gr, useEffect as Gn } from "react";
+import w, { useState as fe, useCallback as z, useLayoutEffect as En, createContext as xt, forwardRef as xn, useContext as Xe, createElement as me, Fragment as Ne, useRef as ce, useMemo as Ae, Component as Gr, useEffect as Gn } from "react";
 import { createPortal as Sr } from "react-dom";
-const { Component: Br } = window.Laraberg.wordpress.element;
-class wr extends Br {
+const { Component: wr } = window.Laraberg.wordpress.element;
+class Br extends wr {
   constructor() {
     super(...arguments);
     Le(this, "type", "image");
-    Le(this, "prefix", "/admin/laraberg-filemanager");
+    Le(this, "prefix", window.CustombergConfig.routes_filemanager);
     this.state = {
       value: ""
     }, this.props.type && (this.type = this.props.type), this.props.value && (this.state.value = this.props.value);
@@ -120,7 +120,7 @@ function Pt(t, e) {
   }
   return r;
 }
-function w(t) {
+function B(t) {
   for (var e = 1; e < arguments.length; e++) {
     var r = arguments[e] != null ? arguments[e] : {};
     e % 2 ? Pt(Object(r), !0).forEach(function(i) {
@@ -167,7 +167,7 @@ function ft(t, e) {
     i[r] = t[r];
   return i;
 }
-function Bn(t, e) {
+function wn(t, e) {
   if (!!t) {
     if (typeof t == "string")
       return ft(t, e);
@@ -183,7 +183,7 @@ function Wr() {
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
 }
 function ge(t, e) {
-  return Nr(t) || Rr(t, e) || Bn(t, e) || Wr();
+  return Nr(t) || Rr(t, e) || wn(t, e) || Wr();
 }
 function Tr(t, e) {
   if (t == null)
@@ -216,7 +216,7 @@ function Xr(t) {
   }, [g]), P = z(function() {
     typeof d == "function" && d(), y(!1);
   }, [d]), D = a !== void 0 ? a : I, U = s !== void 0 ? s : p, ee = v !== void 0 ? v : Z;
-  return w(w({}, b), {}, {
+  return B(B({}, b), {}, {
     inputValue: D,
     menuIsOpen: U,
     onChange: K,
@@ -322,8 +322,8 @@ function Jr() {
   throw new TypeError(`Invalid attempt to spread non-iterable instance.
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
 }
-function wn(t) {
-  return Yr(t) || zr(t) || Bn(t) || Jr();
+function Bn(t) {
+  return Yr(t) || zr(t) || wn(t) || Jr();
 }
 function jr(t) {
   if (t.sheet)
@@ -370,7 +370,7 @@ var _r = /* @__PURE__ */ function() {
       return i.parentNode && i.parentNode.removeChild(i);
     }), this.tags = [], this.ctr = 0, process.env.NODE_ENV !== "production" && (this._alreadyInsertedOrderInsensitiveRule = !1);
   }, t;
-}(), Y = "-ms-", $e = "-moz-", N = "-webkit-", Gt = "comm", St = "rule", Bt = "decl", Qr = "@import", Fn = "@keyframes", $r = Math.abs, nt = String.fromCharCode, Kr = Object.assign;
+}(), Y = "-ms-", $e = "-moz-", N = "-webkit-", Gt = "comm", St = "rule", wt = "decl", Qr = "@import", Fn = "@keyframes", $r = Math.abs, nt = String.fromCharCode, Kr = Object.assign;
 function qr(t, e) {
   return M(t, 0) ^ 45 ? (((e << 2 ^ M(t, 0)) << 2 ^ M(t, 1)) << 2 ^ M(t, 2)) << 2 ^ M(t, 3) : 0;
 }
@@ -395,7 +395,7 @@ function Re(t, e, r) {
 function se(t) {
   return t.length;
 }
-function wt(t) {
+function Bt(t) {
   return t.length;
 }
 function Me(t, e) {
@@ -408,7 +408,7 @@ var rt = 1, xe = 1, Nn = 0, j = 0, O = 0, Se = "";
 function it(t, e, r, i, n, o, u) {
   return { value: t, root: e, parent: r, type: i, props: n, children: o, line: rt, column: xe, length: u, return: "" };
 }
-function we(t, e) {
+function Be(t, e) {
   return Kr(it("", null, null, "", null, null, 0), t, { length: -t.length }, e);
 }
 function ni() {
@@ -601,7 +601,7 @@ function Ue(t, e, r, i, n, o, u, a, s) {
   return o;
 }
 function Ot(t, e, r, i, n, o, u, a, s, c, l) {
-  for (var d = n - 1, g = n === 0 ? o : [""], v = wt(g), b = 0, f = 0, m = 0; b < i; ++b)
+  for (var d = n - 1, g = n === 0 ? o : [""], v = Bt(g), b = 0, f = 0, m = 0; b < i; ++b)
     for (var I = 0, S = Re(t, d + 1, d = $r(f = u[b])), h = t; I < v; ++I)
       (h = Vn(f > 0 ? g[I] + " " + S : T(S, /&\f/g, g[I]))) && (s[m++] = h);
   return it(t, e, r, n === 0 ? St : a, s, c, l);
@@ -610,17 +610,17 @@ function ci(t, e, r) {
   return it(t, e, r, Gt, nt(ni()), Re(t, 2, -2), 0);
 }
 function Lt(t, e, r, i) {
-  return it(t, e, r, Bt, Re(t, 0, i), Re(t, i + 1, -1), i);
+  return it(t, e, r, wt, Re(t, 0, i), Re(t, i + 1, -1), i);
 }
 function Ee(t, e) {
-  for (var r = "", i = wt(t), n = 0; n < i; n++)
+  for (var r = "", i = Bt(t), n = 0; n < i; n++)
     r += e(t[n], n, t, e) || "";
   return r;
 }
 function li(t, e, r, i) {
   switch (t.type) {
     case Qr:
-    case Bt:
+    case wt:
       return t.return = t.return || t.value;
     case Gt:
       return "";
@@ -632,7 +632,7 @@ function li(t, e, r, i) {
   return se(r = Ee(t.children, i)) ? t.return = t.value + "{" + r + "}" : "";
 }
 function di(t) {
-  var e = wt(t);
+  var e = Bt(t);
   return function(r, i, n, o) {
     for (var u = "", a = 0; a < e; a++)
       u += t[a](r, i, n, o) || "";
@@ -845,11 +845,11 @@ function Zn(t, e) {
 var Gi = function(e, r, i, n) {
   if (e.length > -1 && !e.return)
     switch (e.type) {
-      case Bt:
+      case wt:
         e.return = Zn(e.value, e.length);
         break;
       case Fn:
-        return Ee([we(e, {
+        return Ee([Be(e, {
           value: T(e.value, "@", "@" + N)
         })], n);
       case St:
@@ -858,22 +858,22 @@ var Gi = function(e, r, i, n) {
             switch (ei(o, /(::plac\w+|:read-\w+)/)) {
               case ":read-only":
               case ":read-write":
-                return Ee([we(e, {
+                return Ee([Be(e, {
                   props: [T(o, /:(read-\w+)/, ":" + $e + "$1")]
                 })], n);
               case "::placeholder":
-                return Ee([we(e, {
+                return Ee([Be(e, {
                   props: [T(o, /:(plac\w+)/, ":" + N + "input-$1")]
-                }), we(e, {
+                }), Be(e, {
                   props: [T(o, /:(plac\w+)/, ":" + $e + "$1")]
-                }), we(e, {
+                }), Be(e, {
                   props: [T(o, /:(plac\w+)/, Y + "input-$1")]
                 })], n);
             }
             return "";
           });
     }
-}, Si = [Gi], Bi = function(e) {
+}, Si = [Gi], wi = function(e) {
   var r = e.key;
   if (process.env.NODE_ENV !== "production" && !r)
     throw new Error(`You have to configure \`key\` for your cache. Please make sure it's unique (and not equal to 'css') as it's used for linking styles to your cache.
@@ -945,7 +945,7 @@ If multiple caches share the same key they might "fight" for each other's style 
  * LICENSE file in the root directory of this source tree.
  */
 var kt;
-function wi() {
+function Bi() {
   if (kt)
     return R;
   kt = 1;
@@ -1029,8 +1029,8 @@ function Fi() {
     }
     function C(A) {
       if (typeof A == "object" && A !== null) {
-        var Be = A.$$typeof;
-        switch (Be) {
+        var we = A.$$typeof;
+        switch (we) {
           case e:
             var pe = A.type;
             switch (pe) {
@@ -1051,11 +1051,11 @@ function Fi() {
                   case u:
                     return Oe;
                   default:
-                    return Be;
+                    return we;
                 }
             }
           case r:
-            return Be;
+            return we;
         }
       }
     }
@@ -1103,7 +1103,7 @@ function Fi() {
   }()), W;
 }
 (function(t) {
-  process.env.NODE_ENV === "production" ? t.exports = wi() : t.exports = Fi();
+  process.env.NODE_ENV === "production" ? t.exports = Bi() : t.exports = Fi();
 })(Xn);
 var Pn = Xn.exports, Vi = {
   $$typeof: !0,
@@ -1362,7 +1362,7 @@ var ie, Ze = function(e, r, i) {
 }, ki = function(e) {
   return e();
 }, kn = V["useInsertionEffect"] ? V["useInsertionEffect"] : !1, Yn = kn || ki, _t = kn || En, Rt = {}.hasOwnProperty, Wt = /* @__PURE__ */ xt(
-  typeof HTMLElement < "u" ? /* @__PURE__ */ Bi({
+  typeof HTMLElement < "u" ? /* @__PURE__ */ wi({
     key: "css"
   }) : null
 );
@@ -1840,7 +1840,7 @@ var an = function(e) {
 }, Kn = function(e) {
   e.className, e.clearValue, e.cx, e.getStyles, e.getClassNames, e.getValue, e.hasValue, e.isMulti, e.isRtl, e.options, e.selectOption, e.selectProps, e.setValue, e.theme;
   var r = Ge(e, go);
-  return w({}, r);
+  return B({}, r);
 }, X = function(e, r, i) {
   var n = e.cx, o = e.getStyles, u = e.getClassNames, a = e.className;
   return {
@@ -2020,9 +2020,9 @@ function So(t) {
 }
 var tr = function(e) {
   return e === "auto" ? "bottom" : e;
-}, Bo = function(e, r) {
+}, wo = function(e, r) {
   var i, n = e.placement, o = e.theme, u = o.borderRadius, a = o.spacing, s = o.colors;
-  return w((i = {
+  return B((i = {
     label: "menu"
   }, Ve(i, So(n), "100%"), Ve(i, "position", "absolute"), Ve(i, "width", "100%"), Ve(i, "zIndex", 1), i), r ? {} : {
     backgroundColor: s.neutral0,
@@ -2031,7 +2031,7 @@ var tr = function(e) {
     marginBottom: a.menuGutter,
     marginTop: a.menuGutter
   });
-}, nr = /* @__PURE__ */ xt(null), wo = function(e) {
+}, nr = /* @__PURE__ */ xt(null), Bo = function(e) {
   var r = e.children, i = e.minMenuHeight, n = e.maxMenuHeight, o = e.menuPlacement, u = e.menuPosition, a = e.menuShouldScrollIntoView, s = e.theme, c = Xe(nr) || {}, l = c.setPortalPlacement, d = ce(null), g = fe(n), v = ge(g, 2), b = v[0], f = v[1], m = fe(null), I = ge(m, 2), S = I[0], h = I[1], C = s.spacing.controlHeight;
   return At(function() {
     var p = d.current;
@@ -2049,7 +2049,7 @@ var tr = function(e) {
     }
   }, [n, o, u, a, i, l, C]), r({
     ref: d,
-    placerProps: w(w({}, e), {}, {
+    placerProps: B(B({}, e), {}, {
       placement: S || tr(o),
       maxHeight: b
     })
@@ -2063,7 +2063,7 @@ var tr = function(e) {
   }, n), r);
 }, Vo = function(e, r) {
   var i = e.maxHeight, n = e.theme.spacing.baseUnit;
-  return w({
+  return B({
     maxHeight: i,
     overflowY: "auto",
     position: "relative",
@@ -2082,7 +2082,7 @@ var tr = function(e) {
   }, i), r);
 }, rr = function(e, r) {
   var i = e.theme, n = i.spacing.baseUnit, o = i.colors;
-  return w({
+  return B({
     textAlign: "center"
   }, r ? {} : {
     color: o.neutral40,
@@ -2149,7 +2149,7 @@ var To = function(e) {
     return null;
   var y = x("div", G({
     ref: p
-  }, X(w(w({}, e), {}, {
+  }, X(B(B({}, e), {}, {
     offset: I.offset,
     position: a,
     rect: I.rect
@@ -2175,7 +2175,7 @@ var To = function(e) {
   }), i), r);
 }, Do = function(e, r) {
   var i = e.theme.spacing, n = e.isMulti, o = e.hasValue, u = e.selectProps.controlShouldRenderValue;
-  return w({
+  return B({
     alignItems: "center",
     display: n && o && u ? "flex" : "grid",
     flex: 1,
@@ -2241,7 +2241,7 @@ var Yo = process.env.NODE_ENV === "production" ? {
   }));
 }, sr = function(e, r) {
   var i = e.isFocused, n = e.theme, o = n.spacing.baseUnit, u = n.colors;
-  return w({
+  return B({
     label: "indicatorContainer",
     display: "flex",
     transition: "color 150ms"
@@ -2266,7 +2266,7 @@ var Yo = process.env.NODE_ENV === "production" ? {
   }), i), r || x(Xt, null));
 }, _o = function(e, r) {
   var i = e.isDisabled, n = e.theme, o = n.spacing.baseUnit, u = n.colors;
-  return w({
+  return B({
     label: "indicatorSeparator",
     alignSelf: "stretch",
     width: 1
@@ -2285,7 +2285,7 @@ var Yo = process.env.NODE_ENV === "production" ? {
   40% { opacity: 1; }
 `]))), Ko = function(e, r) {
   var i = e.isFocused, n = e.size, o = e.theme, u = o.colors, a = o.spacing.baseUnit;
-  return w({
+  return B({
     label: "loadingIndicator",
     display: "flex",
     transition: "color 150ms",
@@ -2334,7 +2334,7 @@ cr.defaultProps = {
 };
 var qo = function(e, r) {
   var i = e.isDisabled, n = e.isFocused, o = e.theme, u = o.colors, a = o.borderRadius, s = o.spacing;
-  return w({
+  return B({
     label: "control",
     alignItems: "center",
     cursor: "default",
@@ -2385,7 +2385,7 @@ var qo = function(e, r) {
   }), c), x("div", null, r));
 }, ia = function(e, r) {
   var i = e.theme, n = i.colors, o = i.spacing;
-  return w({
+  return B({
     label: "group",
     cursor: "default",
     display: "block"
@@ -2407,7 +2407,7 @@ var qo = function(e, r) {
   }), i));
 }, aa = ["innerRef", "isDisabled", "isHidden", "inputClassName"], ua = function(e, r) {
   var i = e.isDisabled, n = e.value, o = e.theme, u = o.spacing, a = o.colors;
-  return w(w({
+  return B(B({
     visibility: i ? "hidden" : "visible",
     transform: n ? "translateZ(0)" : ""
   }, sa), r ? {} : {
@@ -2429,13 +2429,13 @@ var qo = function(e, r) {
   display: "inline-grid",
   gridArea: "1 / 1 / 2 / 3",
   gridTemplateColumns: "0 min-content",
-  "&:after": w({
+  "&:after": B({
     content: 'attr(data-value) " "',
     visibility: "hidden",
     whiteSpace: "pre"
   }, lr)
 }, ca = function(e) {
-  return w({
+  return B({
     label: "input",
     color: "inherit",
     background: 0,
@@ -2458,7 +2458,7 @@ var qo = function(e, r) {
   }, c)));
 }, da = function(e, r) {
   var i = e.theme, n = i.spacing, o = i.borderRadius, u = i.colors;
-  return w({
+  return B({
     label: "multiValue",
     display: "flex",
     minWidth: 0
@@ -2469,7 +2469,7 @@ var qo = function(e, r) {
   });
 }, ga = function(e, r) {
   var i = e.theme, n = i.borderRadius, o = i.colors, u = e.cropWithEllipsis;
-  return w({
+  return B({
     overflow: "hidden",
     textOverflow: u || u === void 0 ? "ellipsis" : void 0,
     whiteSpace: "nowrap"
@@ -2482,7 +2482,7 @@ var qo = function(e, r) {
   });
 }, ba = function(e, r) {
   var i = e.theme, n = i.spacing, o = i.borderRadius, u = i.colors, a = e.isFocused;
-  return w({
+  return B({
     alignItems: "center",
     display: "flex"
   }, r ? {} : {
@@ -2511,20 +2511,20 @@ var Ia = function(e) {
   var r = e.children, i = e.components, n = e.data, o = e.innerProps, u = e.isDisabled, a = e.removeProps, s = e.selectProps, c = i.Container, l = i.Label, d = i.Remove;
   return x(c, {
     data: n,
-    innerProps: w(w({}, X(e, "multiValue", {
+    innerProps: B(B({}, X(e, "multiValue", {
       "multi-value": !0,
       "multi-value--is-disabled": u
     })), o),
     selectProps: s
   }, x(l, {
     data: n,
-    innerProps: w({}, X(e, "multiValueLabel", {
+    innerProps: B({}, X(e, "multiValueLabel", {
       "multi-value__label": !0
     })),
     selectProps: s
   }, r), x(d, {
     data: n,
-    innerProps: w(w({}, X(e, "multiValueRemove", {
+    innerProps: B(B({}, X(e, "multiValueRemove", {
       "multi-value__remove": !0
     })), {}, {
       "aria-label": "Remove ".concat(r || "option")
@@ -2533,7 +2533,7 @@ var Ia = function(e) {
   }));
 }, va = function(e, r) {
   var i = e.isDisabled, n = e.isFocused, o = e.isSelected, u = e.theme, a = u.spacing, s = u.colors;
-  return w({
+  return B({
     label: "option",
     cursor: "default",
     display: "block",
@@ -2562,7 +2562,7 @@ var Ia = function(e) {
   }, a), r);
 }, Ca = function(e, r) {
   var i = e.theme, n = i.spacing, o = i.colors;
-  return w({
+  return B({
     label: "placeholder",
     gridArea: "1 / 1 / 2 / 3"
   }, r ? {} : {
@@ -2577,7 +2577,7 @@ var Ia = function(e) {
   }), i), r);
 }, Aa = function(e, r) {
   var i = e.isDisabled, n = e.theme, o = n.spacing, u = n.colors;
-  return w({
+  return B({
     label: "singleValue",
     gridArea: "1 / 1 / 2 / 3",
     maxWidth: "100%",
@@ -2622,14 +2622,14 @@ var Ia = function(e) {
   SingleValue: Ea,
   ValueContainer: Oo
 }, Ga = function(e) {
-  return w(w({}, xa), e.components);
+  return B(B({}, xa), e.components);
 }, ln = Number.isNaN || function(e) {
   return typeof e == "number" && e !== e;
 };
 function Sa(t, e) {
   return !!(t === e || ln(t) && ln(e));
 }
-function Ba(t, e) {
+function wa(t, e) {
   if (t.length !== e.length)
     return !1;
   for (var r = 0; r < t.length; r++)
@@ -2637,8 +2637,8 @@ function Ba(t, e) {
       return !1;
   return !0;
 }
-function wa(t, e) {
-  e === void 0 && (e = Ba);
+function Ba(t, e) {
+  e === void 0 && (e = wa);
   var r = null;
   function i() {
     for (var n = [], o = 0; o < arguments.length; o++)
@@ -2720,13 +2720,13 @@ var Va = process.env.NODE_ENV === "production" ? {
   }
 }, Ra = function(e) {
   var r = e.ariaSelection, i = e.focusedOption, n = e.focusedValue, o = e.focusableOptions, u = e.isFocused, a = e.selectValue, s = e.selectProps, c = e.id, l = s.ariaLiveMessages, d = s.getOptionLabel, g = s.inputValue, v = s.isMulti, b = s.isOptionDisabled, f = s.isSearchable, m = s.menuIsOpen, I = s.options, S = s.screenReaderStatus, h = s.tabSelectsValue, C = s["aria-label"], p = s["aria-live"], y = Ae(function() {
-    return w(w({}, Na), l || {});
+    return B(B({}, Na), l || {});
   }, [l]), E = Ae(function() {
     var P = "";
     if (r && y.onChange) {
       var D = r.option, U = r.options, ee = r.removedValue, _ = r.removedValues, oe = r.value, re = function(ne) {
         return Array.isArray(ne) ? null : ne;
-      }, de = ee || D || re(oe), L = de ? d(de) : "", k = U || _ || void 0, ae = k ? k.map(d) : [], ue = w({
+      }, de = ee || D || re(oe), L = de ? d(de) : "", k = U || _ || void 0, ae = k ? k.map(d) : [], ue = B({
         isDisabled: de && b(de, a),
         label: L,
         labels: ae
@@ -3049,7 +3049,7 @@ var br = function(e) {
   return e.replace(Wa, function(r) {
     return gr[r];
   });
-}, Ta = wa(br), gn = function(e) {
+}, Ta = Ba(br), gn = function(e) {
   return e.replace(/^\s+|\s+$/g, "");
 }, Za = function(e) {
   return "".concat(e.label, " ").concat(e.value);
@@ -3057,7 +3057,7 @@ var br = function(e) {
   return function(r, i) {
     if (r.data.__isNew__)
       return !0;
-    var n = w({
+    var n = B({
       ignoreCase: !0,
       ignoreAccents: !0,
       stringify: Za,
@@ -3260,7 +3260,7 @@ var ja = process.env.NODE_ENV === "production" ? {
   input: ua,
   loadingIndicator: Ko,
   loadingMessage: Wo,
-  menu: Bo,
+  menu: wo,
   menuList: Vo,
   menuPortal: To,
   multiValue: da,
@@ -3378,7 +3378,7 @@ function fr(t, e) {
 }
 function mr(t) {
   return t.reduce(function(e, r) {
-    return r.type === "group" ? e.push.apply(e, wn(r.options.map(function(i) {
+    return r.type === "group" ? e.push.apply(e, Bn(r.options.map(function(i) {
       return i.data;
     }))) : e.push(r.data), e;
   }, []);
@@ -3481,7 +3481,7 @@ var yr = function(e) {
           return n.getOptionValue(m) !== f;
         }), "deselect-option", a);
       } else if (!b)
-        l ? n.setValue([].concat(wn(g), [a]), "select-option", a) : n.setValue(a, "select-option");
+        l ? n.setValue([].concat(Bn(g), [a]), "select-option", a) : n.setValue(a, "select-option");
       else {
         n.ariaOnChange(a, {
           action: "select-option",
@@ -3543,7 +3543,7 @@ var yr = function(e) {
       return n.props.menuIsOpen ? n.buildFocusableOptions() : [];
     }, n.ariaOnChange = function(a, s) {
       n.setState({
-        ariaSelection: w({
+        ariaSelection: B({
           value: a
         }, s)
       });
@@ -3827,7 +3827,7 @@ var yr = function(e) {
   }, {
     key: "getTheme",
     value: function() {
-      return this.props.theme ? typeof this.props.theme == "function" ? this.props.theme(bt) : w(w({}, bt), this.props.theme) : bt;
+      return this.props.theme ? typeof this.props.theme == "function" ? this.props.theme(bt) : B(B({}, bt), this.props.theme) : bt;
     }
   }, {
     key: "getCommonProps",
@@ -3922,7 +3922,7 @@ var yr = function(e) {
   }, {
     key: "renderInput",
     value: function() {
-      var n = this.props, o = n.isDisabled, u = n.isSearchable, a = n.inputId, s = n.inputValue, c = n.tabIndex, l = n.form, d = n.menuIsOpen, g = n.required, v = this.getComponents(), b = v.Input, f = this.state, m = f.inputIsHidden, I = f.ariaSelection, S = this.commonProps, h = a || this.getElementId("input"), C = w(w(w({
+      var n = this.props, o = n.isDisabled, u = n.isSearchable, a = n.inputId, s = n.inputValue, c = n.tabIndex, l = n.form, d = n.menuIsOpen, g = n.required, v = this.getComponents(), b = v.Input, f = this.state, m = f.inputIsHidden, I = f.ariaSelection, S = this.commonProps, h = a || this.getElementId("input"), C = B(B(B({
         "aria-autocomplete": "list",
         "aria-expanded": d,
         "aria-haspopup": !0,
@@ -4088,11 +4088,11 @@ var yr = function(e) {
       var U = function(k, ae) {
         var ue = k.type, te = k.data, ne = k.isDisabled, be = k.isSelected, Ce = k.label, ut = k.value, De = f === te, A = ne ? void 0 : function() {
           return n.onOptionHover(te);
-        }, Be = ne ? void 0 : function() {
+        }, we = ne ? void 0 : function() {
           return n.selectOption(te);
         }, pe = "".concat(n.getElementId("option"), "-").concat(ae), Oe = {
           id: pe,
-          onClick: Be,
+          onClick: we,
           onMouseMove: A,
           onMouseOver: A,
           tabIndex: -1
@@ -4151,7 +4151,7 @@ var yr = function(e) {
         menuPlacement: F,
         menuPosition: Z,
         menuShouldScrollIntoView: H
-      }, de = /* @__PURE__ */ V.createElement(wo, G({}, b, re), function(L) {
+      }, de = /* @__PURE__ */ V.createElement(Bo, G({}, b, re), function(L) {
         var k = L.ref, ae = L.placerProps, ue = ae.placement, te = ae.maxHeight;
         return /* @__PURE__ */ V.createElement(s, G({}, b, re, {
           innerRef: k,
@@ -4292,7 +4292,7 @@ var yr = function(e) {
         value: ze(m, I, I[0] || null),
         options: I,
         action: "initial-input-focus"
-      }, F = !d), (c == null ? void 0 : c.action) === "initial-input-focus" && (E = null), w(w(w({}, S), y), {}, {
+      }, F = !d), (c == null ? void 0 : c.action) === "initial-input-focus" && (E = null), B(B(B({}, S), y), {}, {
         prevProps: n,
         ariaSelection: E,
         prevWasFocused: F
@@ -4343,7 +4343,7 @@ window.CustombergEditFields = (t) => Iu((e, r) => {
     }
     render() {
       const { isSelected: r, isInnerSelected: i } = this.props;
-      return /* @__PURE__ */ B.createElement("div", { className: this.props.className }, /* @__PURE__ */ B.createElement("h3", null, "Block: ", t.name), !r && !i ? /* @__PURE__ */ B.createElement(Fr, { block: t, attributes: this.props.attributes }) : /* @__PURE__ */ B.createElement(B.Fragment, null, t.multilanguage && /* @__PURE__ */ B.createElement("div", { style: pt.langButtonsContainer }, /* @__PURE__ */ B.createElement(
+      return /* @__PURE__ */ w.createElement("div", { className: this.props.className }, /* @__PURE__ */ w.createElement("h3", null, "Block: ", t.name), !r && !i ? /* @__PURE__ */ w.createElement(Fr, { block: t, attributes: this.props.attributes }) : /* @__PURE__ */ w.createElement(w.Fragment, null, t.multilanguage && /* @__PURE__ */ w.createElement("div", { style: pt.langButtonsContainer }, /* @__PURE__ */ w.createElement(
         "button",
         {
           style: {
@@ -4355,7 +4355,7 @@ window.CustombergEditFields = (t) => Iu((e, r) => {
           type: "button",
           onClick: () => this.changeLang({ name: "ro" })
         },
-        /* @__PURE__ */ B.createElement(
+        /* @__PURE__ */ w.createElement(
           "span",
           {
             style: {
@@ -4365,7 +4365,7 @@ window.CustombergEditFields = (t) => Iu((e, r) => {
           },
           "ro"
         )
-      ), /* @__PURE__ */ B.createElement(
+      ), /* @__PURE__ */ w.createElement(
         "button",
         {
           style: {
@@ -4378,7 +4378,7 @@ window.CustombergEditFields = (t) => Iu((e, r) => {
           type: "button",
           onClick: () => this.changeLang({ name: "en" })
         },
-        /* @__PURE__ */ B.createElement(
+        /* @__PURE__ */ w.createElement(
           "span",
           {
             style: {
@@ -4388,7 +4388,7 @@ window.CustombergEditFields = (t) => Iu((e, r) => {
           },
           "en"
         )
-      )), /* @__PURE__ */ B.createElement("div", { class: "customberg-fields" }, t.fields.map((n, o) => /* @__PURE__ */ B.createElement("div", { key: n.name + o, style: { padding: 4 } }, this.renderField(n, this.props.attributes[n.name], (u) => {
+      )), /* @__PURE__ */ w.createElement("div", { class: "customberg-fields" }, t.fields.map((n, o) => /* @__PURE__ */ w.createElement("div", { key: n.name + o, style: { padding: 4 } }, this.renderField(n, this.props.attributes[n.name], (u) => {
         n.multilanguage ? this.props.setAttributes({
           [n.name]: {
             ...this.props.attributes[n.name],
@@ -4399,7 +4399,7 @@ window.CustombergEditFields = (t) => Iu((e, r) => {
     }
     renderField(r, i, n) {
       if (r.multilanguage && (typeof i == "string" || !i) && (i = { ro: i, en: i }), r.type == "text")
-        return /* @__PURE__ */ B.createElement("label", { style: { width: "100%" } }, /* @__PURE__ */ B.createElement("div", null, r.label), r.multilanguage ? /* @__PURE__ */ B.createElement(
+        return /* @__PURE__ */ w.createElement("label", { style: { width: "100%" } }, /* @__PURE__ */ w.createElement("div", null, r.label), r.multilanguage ? /* @__PURE__ */ w.createElement(
           "input",
           {
             type: "text",
@@ -4407,7 +4407,7 @@ window.CustombergEditFields = (t) => Iu((e, r) => {
             onChange: (o) => n(o.target.value),
             style: { width: "100%" }
           }
-        ) : /* @__PURE__ */ B.createElement(
+        ) : /* @__PURE__ */ w.createElement(
           "input",
           {
             type: "text",
@@ -4417,7 +4417,7 @@ window.CustombergEditFields = (t) => Iu((e, r) => {
           }
         ));
       if (r.type == "upload_image")
-        return /* @__PURE__ */ B.createElement("label", { style: { width: "100%" } }, /* @__PURE__ */ B.createElement("div", null, r.label), /* @__PURE__ */ B.createElement(wr, { value: i, onChange: (o) => n(o[0].url) }));
+        return /* @__PURE__ */ w.createElement("label", { style: { width: "100%" } }, /* @__PURE__ */ w.createElement("div", null, r.label), /* @__PURE__ */ w.createElement(Br, { value: i, onChange: (o) => n(o[0].url) }));
       if (r.type == "select") {
         let o = Object.keys((r == null ? void 0 : r.options) || []).map((s) => ({
           value: s,
@@ -4430,7 +4430,7 @@ window.CustombergEditFields = (t) => Iu((e, r) => {
             s ? r.multiple ? s.map((l) => l.value) : s.value : null
           );
         };
-        return /* @__PURE__ */ B.createElement("label", { style: { width: "100%" }, class: "customberg-field-select" }, /* @__PURE__ */ B.createElement("div", null, r.label), /* @__PURE__ */ B.createElement(
+        return /* @__PURE__ */ w.createElement("label", { style: { width: "100%" }, class: "customberg-field-select" }, /* @__PURE__ */ w.createElement("div", null, r.label), /* @__PURE__ */ w.createElement(
           du,
           {
             value: u,
@@ -4444,7 +4444,7 @@ window.CustombergEditFields = (t) => Iu((e, r) => {
         ));
       }
       if (r.type == "rich_text")
-        return /* @__PURE__ */ B.createElement("label", { style: { width: "100%" }, className: "customberg-field-rich-text" }, /* @__PURE__ */ B.createElement("div", null, r.label), /* @__PURE__ */ B.createElement("div", { className: "rich-text-component" }, /* @__PURE__ */ B.createElement(
+        return /* @__PURE__ */ w.createElement("label", { style: { width: "100%" }, className: "customberg-field-rich-text" }, /* @__PURE__ */ w.createElement("div", null, r.label), /* @__PURE__ */ w.createElement("div", { className: "rich-text-component" }, /* @__PURE__ */ w.createElement(
           pu,
           {
             tagName: "div",
@@ -4455,7 +4455,7 @@ window.CustombergEditFields = (t) => Iu((e, r) => {
           }
         )));
       if (r.type == "color")
-        return /* @__PURE__ */ B.createElement("div", { style: { width: "100%" }, className: "customberg-field-color" }, /* @__PURE__ */ B.createElement("div", null, r.label), /* @__PURE__ */ B.createElement(hu, { value: i, onChange: n }));
+        return /* @__PURE__ */ w.createElement("div", { style: { width: "100%" }, className: "customberg-field-color" }, /* @__PURE__ */ w.createElement("div", null, r.label), /* @__PURE__ */ w.createElement(hu, { value: i, onChange: n }));
       if (r.type == "repeatable") {
         i || (i = []);
         const o = () => {
@@ -4469,7 +4469,7 @@ window.CustombergEditFields = (t) => Iu((e, r) => {
           l.splice(c, 1), n(l);
         };
         let s = !1;
-        return r.maxItems && i.length >= r.maxItems && (s = !0), /* @__PURE__ */ B.createElement("div", null, /* @__PURE__ */ B.createElement("div", null, r.label), /* @__PURE__ */ B.createElement("div", null, i.map((c, l) => /* @__PURE__ */ B.createElement("div", { key: r.name + l, style: pt.repeatableItem }, /* @__PURE__ */ B.createElement(
+        return r.maxItems && i.length >= r.maxItems && (s = !0), /* @__PURE__ */ w.createElement("div", null, /* @__PURE__ */ w.createElement("div", null, r.label), /* @__PURE__ */ w.createElement("div", null, i.map((c, l) => /* @__PURE__ */ w.createElement("div", { key: r.name + l, style: pt.repeatableItem }, /* @__PURE__ */ w.createElement(
           "button",
           {
             type: "button",
@@ -4477,9 +4477,9 @@ window.CustombergEditFields = (t) => Iu((e, r) => {
             style: pt.repeatableDeleteBtn
           },
           "X"
-        ), r.fields.map((d, g) => /* @__PURE__ */ B.createElement("div", { key: d.name + g, style: { padding: 4 } }, this.renderField(d, c[d.name], (v) => {
+        ), r.fields.map((d, g) => /* @__PURE__ */ w.createElement("div", { key: d.name + g, style: { padding: 4 } }, this.renderField(d, c[d.name], (v) => {
           u(d, l, v);
-        })))))), /* @__PURE__ */ B.createElement("div", null, /* @__PURE__ */ B.createElement(
+        })))))), /* @__PURE__ */ w.createElement("div", null, /* @__PURE__ */ w.createElement(
           "button",
           {
             type: "button",
@@ -4494,7 +4494,7 @@ window.CustombergEditFields = (t) => Iu((e, r) => {
 );
 function hu({ value: t, onChange: e }) {
   const [r, i] = bu(!1), n = ({ rgb: o }) => `rgba(${o.r}, ${o.g}, ${o.b}, ${o.a})`;
-  return /* @__PURE__ */ B.createElement(B.Fragment, null, /* @__PURE__ */ B.createElement(
+  return /* @__PURE__ */ w.createElement(w.Fragment, null, /* @__PURE__ */ w.createElement(
     "div",
     {
       onClick: (o) => {
@@ -4508,14 +4508,14 @@ function hu({ value: t, onChange: e }) {
         marginTop: 4
       }
     },
-    /* @__PURE__ */ B.createElement("div", { className: "components-color-picker__swatch" }, /* @__PURE__ */ B.createElement("div", { className: "components-color-picker__active", style: { backgroundColor: t } }), /* @__PURE__ */ B.createElement("div", { style: { position: "absolute", left: "50%", top: "100%" } }, r && /* @__PURE__ */ B.createElement(mu, { noArrow: !1, onClose: () => i(!1) }, /* @__PURE__ */ B.createElement(
+    /* @__PURE__ */ w.createElement("div", { className: "components-color-picker__swatch" }, /* @__PURE__ */ w.createElement("div", { className: "components-color-picker__active", style: { backgroundColor: t } }), /* @__PURE__ */ w.createElement("div", { style: { position: "absolute", left: "50%", top: "100%" } }, r && /* @__PURE__ */ w.createElement(mu, { noArrow: !1, onClose: () => i(!1) }, /* @__PURE__ */ w.createElement(
       fu,
       {
         color: t,
         onChangeComplete: (o) => e(o ? n(o) : null)
       }
     )))),
-    /* @__PURE__ */ B.createElement(
+    /* @__PURE__ */ w.createElement(
       "input",
       {
         type: "text",
@@ -4556,8 +4556,16 @@ const pt = {
     top: "5px",
     right: "5px"
   }
-}, { blocks: An } = window.Laraberg.wordpress;
-An.setCategories([
-  ...An.getCategories() || [],
-  { title: "Customberg", slug: "customberg" }
-]);
+};
+window.CustombergUploadAction = async (t) => {
+  const e = new FormData(), r = document.querySelector("meta[name=csrf-token]").getAttribute("content");
+  r && e.append("_token", r);
+  for (var i = 0; i < t.length; i++)
+    e.append("files[]", t[i]);
+  return await (await fetch(window.CustombergConfig.routes_file_upload, {
+    method: "POST",
+    body: e
+  })).json();
+};
+const { blocks: An } = window.Laraberg.wordpress;
+An.setCategories([...An.getCategories() || [], { title: "Customberg", slug: "customberg" }]);
