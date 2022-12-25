@@ -1,0 +1,11 @@
+{
+  "resources/js/customberg.jsx": {
+    "file": "customberg.umd.js",
+    "src": "resources/js/customberg.jsx",
+    "isEntry": true
+  },
+  "style.css": {
+    "file": "style.css",
+    "src": "style.css"
+  }
+}
