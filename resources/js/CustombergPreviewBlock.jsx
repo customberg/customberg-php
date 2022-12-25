@@ -1,4 +1,3 @@
-
 function CustombergPreviewBlock(props) {
     let previewId = String(Math.round(Math.random() * 10000000000000000));
 
@@ -9,17 +8,15 @@ function CustombergPreviewBlock(props) {
 
         // put preview content in iframe
         loadEl.style.display = 'none';
+        iframeEl.contentWindow.document.body.innerHTML = `
+        <div>
+            ${content}
+            <style>
+                img { max-width: 100%; max-height: 100vh; height: auto !important; object-fit: contain; }
+            </style>
+        </div>
+        `;
         iframeEl.contentWindow.document.body.style.overflow = 'hidden';
-        iframeEl.contentWindow.document.body.append($(`
-            <div>
-                ${content}
-                <style>
-                    img { max-width: 100%; max-height: 100%; height: auto !important; object-fit: contain; }
-                    .mask {display:none;}
-                    .swiper-slide {margin-bottom:20px;}
-                </style>
-            </div>
-        `).get(0));
 
         // recalculate iframe height
         let updateIframeHeight = () => {
@@ -53,8 +50,14 @@ function CustombergPreviewBlock(props) {
             <div
                 id={previewId + 'load'}
                 style={{
-                    width: '100%', height: 200, background: '#fafafa', border: '1px solid #e4e4e4',
-                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                    width: '100%',
+                    height: 200,
+                    background: '#fafafa',
+                    border: '1px solid #e4e4e4',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                 }}
             >
                 <div className="customberg-bt-spinner" />
