@@ -14,7 +14,6 @@ class HeroImage
                 // supported types are:
                 // text, rich_text, color, upload_image
                 // repeatable ( 'fields' => [  ] )
-                // blocks ( 'allowed' => ['core/paragraph', 'core/list'] )
                 // select (
                 //     'placeholder' => 'string',
                 //     'multiple' => true/false,
@@ -27,6 +26,21 @@ class HeroImage
                     'name' => 'title',
                     'label' => 'Titlu',
                     'type' => 'text',
+                ],
+                [
+                    'name' => 'description',
+                    'label' => 'Description',
+                    'type' => 'rich_text',
+                ],
+                [
+                    'name' => 'btn_color',
+                    'label' => 'Button Color',
+                    'type' => 'color',
+                ],
+                [
+                    'name' => 'image',
+                    'label' => 'Hero image',
+                    'type' => 'upload_image',
                 ],
             ],
         ];

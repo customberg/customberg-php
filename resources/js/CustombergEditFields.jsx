@@ -188,31 +188,33 @@ window.CustombergEditFields = (block) => {
                     );
                 }
 
-                if (field.type == 'blocks') {
-                    if (
-                        value &&
-                        window.Laraberg.wordpress.data.select('core/block-editor').getBlock(this.props.clientId)
-                            ?.innerBlocks.length == 0
-                    ) {
-                        window.Laraberg.wordpress.data
-                            .dispatch('core/block-editor')
-                            .insertBlocks(window.Laraberg.wordpress.blocks.parse(value), 0, this.props.clientId);
-                    }
-                    return (
-                        <label style={{ width: '100%' }}>
-                            <div>{field.label}</div>
-                            <div style={{ padding: 10, border: '1px solid #ccc' }}>
-                                <InnerBlocks
-                                    value={window.Laraberg.wordpress.blocks.parse(value)}
-                                    onChange={(content) =>
-                                        onChange(window.Laraberg.wordpress.blocks.serialize(content))
-                                    }
-                                    allowedBlocks={field.allowed || null}
-                                />
-                            </div>
-                        </label>
-                    );
-                }
+                // isInnerSelected does not work when you focus an inner block.
+                // 'blocks' field type is disabled now
+                // if (field.type == 'blocks') {
+                //     if (
+                //         value &&
+                //         window.Laraberg.wordpress.data.select('core/block-editor').getBlock(this.props.clientId)
+                //             ?.innerBlocks?.length == 0
+                //     ) {
+                //         window.Laraberg.wordpress.data
+                //             .dispatch('core/block-editor')
+                //             .insertBlocks(window.Laraberg.wordpress.blocks.parse(value), 0, this.props.clientId);
+                //     }
+                //     return (
+                //         <label style={{ width: '100%' }}>
+                //             <div>{field.label}</div>
+                //             <div style={{ padding: 10, border: '1px solid #ccc' }}>
+                //                 <InnerBlocks
+                //                     value={window.Laraberg.wordpress.blocks.parse(value || '')}
+                //                     onChange={(content) =>
+                //                         onChange(window.Laraberg.wordpress.blocks.serialize(content))
+                //                     }
+                //                     allowedBlocks={field.allowed || null}
+                //                 />
+                //             </div>
+                //         </label>
+                //     );
+                // }
 
                 if (field.type == 'select') {
                     let select_options = Object.keys(field?.options || []).map((itemKey) => ({

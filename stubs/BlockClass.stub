@@ -14,7 +14,6 @@ class BlockClass
                 // supported types are:
                 // text, rich_text, color, upload_image
                 // repeatable ( 'fields' => [  ] )
-                // blocks ( 'allowed' => ['core/paragraph', 'core/list'] )
                 // select (
                 //     'placeholder' => 'string',
                 //     'multiple' => true/false,
