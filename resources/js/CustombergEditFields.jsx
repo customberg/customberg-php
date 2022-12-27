@@ -183,7 +183,7 @@ window.CustombergEditFields = (block) => {
                     return (
                         <label style={{ width: '100%' }}>
                             <div>{field.label}</div>
-                            <ButtonUpload value={value} onChange={(items) => onChange(items[0].url)} />
+                            <ButtonUpload value={value} onChange={(items) => onChange(items)} />
                         </label>
                     );
                 }

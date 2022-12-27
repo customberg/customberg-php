@@ -54,6 +54,7 @@ function CustombergPreviewBlock(props) {
                     height: 200,
                     background: '#fafafa',
                     border: '1px solid #e4e4e4',
+                    borderRadius: 6,
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
