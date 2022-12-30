@@ -165,14 +165,14 @@ window.CustombergEditFields = (block) => {
                                     type="text"
                                     value={value[this.props.attributes.activeLang]}
                                     onChange={(e) => onChange(e.target.value)}
-                                    style={{ width: '100%' }}
+                                    style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #ccc', }}
                                 />
                             ) : (
                                 <input
                                     type="text"
                                     value={value}
                                     onChange={(e) => onChange(e.target.value)}
-                                    style={{ width: '100%' }}
+                                    style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #ccc', }}
                                 />
                             )}
                         </label>
@@ -181,10 +181,10 @@ window.CustombergEditFields = (block) => {
 
                 if (field.type == 'upload_image') {
                     return (
-                        <label style={{ width: '100%' }}>
-                            <div>{field.label}</div>
+                        <div style={{ width: '100%', marginBottom: '0.5rem' }}>
+                            <label style={{ marginBottom: 0 }}>{field.label}</label>
                             <ButtonUpload value={value} onChange={(items) => onChange(items)} />
-                        </label>
+                        </div>
                     );
                 }
 
@@ -267,8 +267,8 @@ window.CustombergEditFields = (block) => {
 
                 if (field.type == 'color') {
                     return (
-                        <div style={{ width: '100%' }} className="customberg-field-color">
-                            <div>{field.label}</div>
+                        <div style={{ width: '100%', marginBottom: '0.5rem' }} className="customberg-field-color">
+                            <label style={{ marginBottom: 0 }}>{field.label}</label>
                             <ColorPickerField value={value} onChange={onChange} />
                         </div>
                     );
@@ -355,7 +355,7 @@ function ColorPickerField({ value, onChange }) {
                     setVisible(true);
                 }}
                 style={{
-                    display: 'inline-flex',
+                    display: 'flex',
                     flexDirection: 'row',
                     alignContent: 'center',
                     position: 'relative',
@@ -379,7 +379,7 @@ function ColorPickerField({ value, onChange }) {
                     type="text"
                     value={value}
                     style={{
-                        width: 180,
+                        width: 180, padding: 10, borderRadius: 6, border: '1px solid #ccc',
                         ...(visible ? { borderColor: 'rgb(0, 124, 186)', boxShadow: '0 0 0 0.5px #007cba' } : {}),
                     }}
                 />

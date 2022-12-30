@@ -96,9 +96,10 @@ class CustombergInstance
         return $init;
     }
 
-    public function renderBlocks($html, $lang = null)
+    public function render($html, $lang = null)
     {
         $activeLang = $lang ? $lang : app()->getLocale();
+        $html = str_replace('-->', "-->\n", $html);
 
         function str_replace_limit($find, $replacement, $subject, $limit = 0)
         {
@@ -139,7 +140,7 @@ class CustombergInstance
                     $matched_block[2] = '[]';
                 }
                 $attributes = json_decode($matched_block[2], true);
-                if (strpos($matched_block[1], $block_prefix) === 0) {
+                if (isset($matched_block[1]) && strpos($matched_block[1], $block_prefix) === 0) {
                     $blockSlug = substr($matched_block[1], strlen($block_prefix));
                     if (\View::exists('blocks.' . $blockSlug)) {
                         foreach ($attributes as $attrName => &$value) {
