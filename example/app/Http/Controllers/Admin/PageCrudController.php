@@ -40,7 +40,18 @@ class PageCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('title');
-        CRUD::column('status');
+        CRUD::column('slug')
+            ->label('URL')
+            ->type('closure')
+            ->function(function ($entry) {
+                return "<a href=\"/{$entry->slug}\" target=\"_blank\">/{$entry->slug}</a>";
+            })
+            ->escaped(false);
+
+        CRUD::column('status')
+            ->label('Status')
+            ->type('select_from_array')
+            ->options(Page::STATUSES);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
