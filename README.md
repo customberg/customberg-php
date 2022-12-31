@@ -60,7 +60,6 @@ Enjoy !
 |          |                                                       |
 | -------- | ----------------------------------------------------- |
 | &#x2610; | Make multilanguage configurable and fix ugly frontend |
-| &#x2610; | Fix repeatable frontend. Make more pretty             |
 | &#x2610; | A checkbox and a switch field                         |
 | &#x2610; | Radio field                                           |
 | &#x2610; | Slider field                                          |
@@ -70,7 +69,13 @@ Enjoy !
 
 # Changelog:
 
-### v0.7
+### v0.8 - <small>2022-12-31</small>
+
+-   Fine tuning for repeatable field frontend
+-   Added buttons to move and duplicate a item inside repeatable
+-   Added example block for repeatable
+
+### v0.7 - <small>2022-12-30</small>
 
 -   First version published to packagist.org ! 🎉🥳
 -   Only available fields are: text, rich_text, color, upload_image
