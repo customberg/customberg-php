@@ -1,6 +1,13 @@
 @php
     // props: entry, attribute, push_styles, push_scripts
     $config = Customberg\PHP\Customberg::getConfig();
+    try {
+        $version = \Composer\InstalledVersions::getVersion('customberg/customberg-php') . '@' .  \Composer\InstalledVersions::getReference('customberg/customberg-php');
+        $versionLar = \Composer\InstalledVersions::getVersion('van-ons/laraberg') . '@' .  \Composer\InstalledVersions::getReference('van-ons/laraberg');
+    } catch (\Exception $e) {
+        $version = '0.0.0';
+        $versionLar = '0.0.0';
+    }
     if (!isset($attribute)) {
         $attribute = 'content';
     }
@@ -29,16 +36,16 @@
 </div>
 
 @push($push_styles)
-    <link rel="stylesheet" href="{{ asset('vendor/laraberg/css/laraberg.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/customberg/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/laraberg/css/laraberg.css') }}?ver={{ $versionLar }}">
+    <link rel="stylesheet" href="{{ asset('vendor/customberg/style.css') }}?ver={{ $version }}">
 @endpush
 
 @push($push_scripts)
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
 
-    <script src="{{ asset('vendor/laraberg/js/laraberg.js') }}"></script>
-    <script src="{{ asset('vendor/customberg/customberg.umd.js') }}"></script>
+    <script src="{{ asset('vendor/laraberg/js/laraberg.js') }}?ver={{ $versionLar }}"></script>
+    <script src="{{ asset('vendor/customberg/customberg.umd.js') }}?ver={{ $version }}"></script>
     
     <script>
         jQuery(document).ready(function(){
