@@ -4448,7 +4448,12 @@ window.CustombergEditFields = (t) => Cu((e, r) => {
             type: "text",
             value: i[this.props.attributes.activeLang],
             onChange: (a) => n(a.target.value),
-            style: { width: "100%", padding: 10, borderRadius: 6, border: "1px solid #ccc" }
+            style: {
+              width: "100%",
+              padding: "5px 10px",
+              borderRadius: 6,
+              border: "1px solid #ccc"
+            }
           }
         ) : /* @__PURE__ */ w.createElement(
           "input",
@@ -4456,7 +4461,12 @@ window.CustombergEditFields = (t) => Cu((e, r) => {
             type: "text",
             value: i,
             onChange: (a) => n(a.target.value),
-            style: { width: "100%", padding: 10, borderRadius: 6, border: "1px solid #ccc" }
+            style: {
+              width: "100%",
+              padding: "5px 10px",
+              borderRadius: 6,
+              border: "1px solid #ccc"
+            }
           }
         ));
       if (r.type == "upload_image")
@@ -4547,31 +4557,44 @@ function Au({ value: t, onChange: e }) {
         display: "flex",
         flexDirection: "row",
         alignContent: "center",
-        position: "relative",
         marginTop: 4
       }
     },
-    /* @__PURE__ */ w.createElement("div", { className: "components-color-picker__swatch" }, /* @__PURE__ */ w.createElement("div", { className: "components-color-picker__active", style: { backgroundColor: t } }), /* @__PURE__ */ w.createElement("div", { style: { position: "absolute", left: "50%", top: "100%" } }, r && /* @__PURE__ */ w.createElement(hu, { noArrow: !1, onClose: () => i(!1) }, /* @__PURE__ */ w.createElement(
+    /* @__PURE__ */ w.createElement("div", { style: { position: "relative" } }, /* @__PURE__ */ w.createElement("div", { className: "components-color-picker__swatch" }, /* @__PURE__ */ w.createElement(
+      "div",
+      {
+        className: "components-color-picker__active",
+        style: {
+          backgroundColor: t,
+          width: 20,
+          height: 20,
+          borderRadius: "100%",
+          position: "absolute",
+          right: 10,
+          top: "50%",
+          transform: "translate(0, -50%)"
+        }
+      }
+    ), /* @__PURE__ */ w.createElement("div", { style: { position: "absolute", right: 24, top: "100%" } }, r && /* @__PURE__ */ w.createElement(hu, { noArrow: !1, onClose: () => i(!1) }, /* @__PURE__ */ w.createElement(
       Iu,
       {
         color: t,
         onChangeComplete: (a) => e(a ? n(a) : null)
       }
-    )))),
-    /* @__PURE__ */ w.createElement(
+    )))), /* @__PURE__ */ w.createElement(
       "input",
       {
         type: "text",
         value: t,
         style: {
           width: 180,
-          padding: 10,
+          padding: "5px 10px",
           borderRadius: 6,
           border: "1px solid #ccc",
           ...r ? { borderColor: "rgb(0, 124, 186)", boxShadow: "0 0 0 0.5px #007cba" } : {}
         }
       }
-    )
+    ))
   ));
 }
 const pt = {

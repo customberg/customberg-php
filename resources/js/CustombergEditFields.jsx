@@ -165,14 +165,24 @@ window.CustombergEditFields = (block) => {
                                     type="text"
                                     value={value[this.props.attributes.activeLang]}
                                     onChange={(e) => onChange(e.target.value)}
-                                    style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #ccc', }}
+                                    style={{
+                                        width: '100%',
+                                        padding: '5px 10px',
+                                        borderRadius: 6,
+                                        border: '1px solid #ccc',
+                                    }}
                                 />
                             ) : (
                                 <input
                                     type="text"
                                     value={value}
                                     onChange={(e) => onChange(e.target.value)}
-                                    style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #ccc', }}
+                                    style={{
+                                        width: '100%',
+                                        padding: '5px 10px',
+                                        borderRadius: 6,
+                                        border: '1px solid #ccc',
+                                    }}
                                 />
                             )}
                         </label>
@@ -358,31 +368,47 @@ function ColorPickerField({ value, onChange }) {
                     display: 'flex',
                     flexDirection: 'row',
                     alignContent: 'center',
-                    position: 'relative',
                     marginTop: 4,
                 }}
             >
-                <div className="components-color-picker__swatch">
-                    <div className="components-color-picker__active" style={{ backgroundColor: value }} />
-                    <div style={{ position: 'absolute', left: '50%', top: '100%' }}>
-                        {visible && (
-                            <Popover noArrow={false} onClose={() => setVisible(false)}>
-                                <ColorPicker
-                                    color={value}
-                                    onChangeComplete={(value) => onChange(value ? toRgbaString(value) : null)}
-                                />
-                            </Popover>
-                        )}
+                <div style={{ position: 'relative' }}>
+                    <div className="components-color-picker__swatch">
+                        <div
+                            className="components-color-picker__active"
+                            style={{
+                                backgroundColor: value,
+                                width: 20,
+                                height: 20,
+                                borderRadius: '100%',
+                                position: 'absolute',
+                                right: 10,
+                                top: '50%',
+                                transform: 'translate(0, -50%)',
+                            }}
+                        />
+                        <div style={{ position: 'absolute', right: 24, top: '100%' }}>
+                            {visible && (
+                                <Popover noArrow={false} onClose={() => setVisible(false)}>
+                                    <ColorPicker
+                                        color={value}
+                                        onChangeComplete={(value) => onChange(value ? toRgbaString(value) : null)}
+                                    />
+                                </Popover>
+                            )}
+                        </div>
                     </div>
+                    <input
+                        type="text"
+                        value={value}
+                        style={{
+                            width: 180,
+                            padding: '5px 10px',
+                            borderRadius: 6,
+                            border: '1px solid #ccc',
+                            ...(visible ? { borderColor: 'rgb(0, 124, 186)', boxShadow: '0 0 0 0.5px #007cba' } : {}),
+                        }}
+                    />
                 </div>
-                <input
-                    type="text"
-                    value={value}
-                    style={{
-                        width: 180, padding: 10, borderRadius: 6, border: '1px solid #ccc',
-                        ...(visible ? { borderColor: 'rgb(0, 124, 186)', boxShadow: '0 0 0 0.5px #007cba' } : {}),
-                    }}
-                />
             </div>
         </>
     );

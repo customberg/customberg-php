@@ -27,6 +27,7 @@
     .heroimg-container {
         position: relative;
         height: 100vh;
+        min-height: 400px;
     }
     .heroimg-image {
         width: 100%;

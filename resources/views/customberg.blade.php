@@ -55,6 +55,7 @@
             ]);
             {!! \Customberg\PHP\Customberg::loadBlocks() !!}
             Laraberg.init('laraberg-plugin', {
+                height: 1400,
                 mediaUpload: function (upload) {
                     window.CustombergUploadAction(upload.filesList)
                     .then(function (data) {
