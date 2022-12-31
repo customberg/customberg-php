@@ -2,6 +2,11 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
+        <style>
+            *, :after, :before {
+                box-sizing: border-box;
+            }
+        </style>
         @stack('styles')
     </head>
     
