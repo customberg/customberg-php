@@ -7,7 +7,7 @@
         <title>{{ $page->title }} - Customberg</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="{{ asset('/packages/source-sans-pro/source-sans-pro.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('/styles.css') }}" rel="stylesheet">
 
         <!-- Styles -->
@@ -17,18 +17,33 @@
 
         <style>
             body {
-                font-family: 'Nunito', sans-serif;
+                font-family: 'Source Sans Pro', sans-serif;
             }
         </style>
+        @stack('styles')
     </head>
     
     <body class="page template-default page-{{ optional($page)->slug ?? '' }}">
+        
         <div class="site-header">
-            <div class="site-navigation">
-                <a href="{{ url('/page') }}">Pages Admin</a>
-                <a href="{{ url('/homepage') }}">Homepage</a>
-                <a href="{{ url('/about') }}">About us</a>
-                <a href="{{ url('/contact') }}">Contact</a>
+            <div class="site-header-inner container">
+                <a class="site-logo" href="{{ url('/') }}">
+                    Customberg
+                </a>
+                <div class="site-navigation">
+                    <a href="{{ url('/page') }}" class="{{ Request::is('page') ? 'is-active' : '' }}">
+                        Pages Admin
+                    </a>
+                    <a href="{{ url('/homepage') }}" class="{{ Request::is('homepage') ? 'is-active' : '' }}">
+                        Homepage
+                    </a>
+                    <a href="{{ url('/about') }}" class="{{ Request::is('about') ? 'is-active' : '' }}">
+                        About us
+                    </a>
+                    <a href="{{ url('/contact') }}" class="{{ Request::is('contact') ? 'is-active' : '' }}">
+                        Contact
+                    </a>
+                </div>
             </div>
         </div>
         
@@ -36,5 +51,6 @@
             @yield('main')
         </main>
         
+        @stack('scripts')
     </body>
 </html>

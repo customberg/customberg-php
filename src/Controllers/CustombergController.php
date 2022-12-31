@@ -68,7 +68,10 @@ class CustombergController extends Controller
                 }
             }
         }
-        return view("blocks.$view", $attributes);
+        return view('customberg::preview', [
+            'file' => "blocks.$view",
+            'data' => $attributes,
+        ]);
     }
 
     public function file_upload(Request $request)

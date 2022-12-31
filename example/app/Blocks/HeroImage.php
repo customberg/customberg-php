@@ -2,10 +2,13 @@
 
 namespace App\Blocks;
 
+use App\Models\Page;
+
 class HeroImage
 {
     public static function render()
     {
+        $pages = Page::pluck('title', 'id');
         return [
             'name' => 'HeroImage',
             'slug' => 'cb-hero-image',
@@ -36,6 +39,13 @@ class HeroImage
                     'name' => 'btn_color',
                     'label' => 'Button Color',
                     'type' => 'color',
+                ],
+                [
+                    'name' => 'btn_page',
+                    'label' => 'Button Page',
+                    'type' => 'select',
+                    'placeholder' => 'Select a page to link to',
+                    'options' => $pages,
                 ],
                 [
                     'name' => 'image',
