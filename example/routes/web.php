@@ -13,4 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/change-lang/{lang}', '\App\Http\Controllers\PageController@change_lang')->name('lang');
 Route::get('/{slug}', '\App\Http\Controllers\PageController@get');

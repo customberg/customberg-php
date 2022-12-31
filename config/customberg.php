@@ -7,8 +7,10 @@ return [
         'preview' => '/preview',
         'file_upload' => '/file-upload',
     ],
+    'default_language' => 'en',
     'languages' => [
         'en' => 'English',
+        'ro' => 'Romanian',
     ],
     'assets' => [
         'stack_scripts' => 'crud_fields_scripts',

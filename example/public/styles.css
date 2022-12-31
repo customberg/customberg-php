@@ -1,4 +1,3 @@
-
 :root {
     --container-width: 1200px;
 }
@@ -47,5 +46,17 @@
     opacity: 1;
 }
 .site-header .site-navigation a.is-active {
+    opacity: 1;
+}
+
+.language-switcher {
+    flex-shrink: 0;
+}
+.language-switcher a {
+    color: #000;
+    opacity: 0.4;
+    margin-left: 10px;
+}
+.language-switcher a.is-active {
     opacity: 1;
 }

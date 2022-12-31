@@ -69,13 +69,13 @@ Enjoy !
 
 # Changelog:
 
-### v0.8 - <small>2022-12-31</small>
+### v0.8 - 2022-12-31
 
 -   Fine tuning for repeatable field frontend
 -   Added buttons to move and duplicate a item inside repeatable
 -   Added example block for repeatable
 
-### v0.7 - <small>2022-12-30</small>
+### v0.7 - 2022-12-30
 
 -   First version published to packagist.org ! 🎉🥳
 -   Only available fields are: text, rich_text, color, upload_image

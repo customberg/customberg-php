@@ -44,6 +44,14 @@
                         Contact
                     </a>
                 </div>
+                <div class="language-switcher">
+                    @php($config = Customberg::getConfig())
+                    @foreach ($config['languages'] ?? [] as $lang => $langName)
+                        <a href="{{ route('lang', [$lang]) }}" class="{{ app()->getLocale() == $lang ? 'is-active' : '' }}">
+                            {{ $langName }}
+                        </a>
+                    @endforeach
+                </div>
             </div>
         </div>
         
