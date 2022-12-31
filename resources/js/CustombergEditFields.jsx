@@ -1,7 +1,7 @@
 import React from 'react';
 const { Component, useState } = window.Laraberg.wordpress.element;
 const { InnerBlocks, RichText } = window.Laraberg.wordpress.blockEditor;
-const { ColorPicker, Popover } = window.Laraberg.wordpress.components;
+const { ColorPicker, Popover, Button, Dashicon } = window.Laraberg.wordpress.components;
 const { withSelect } = window.Laraberg.wordpress.data;
 import ButtonUpload from './components/ButtonUpload';
 import CustombergPreviewBlock from './CustombergPreviewBlock';
@@ -72,7 +72,7 @@ window.CustombergEditFields = (block) => {
                 const { isSelected, isInnerSelected } = this.props;
                 return (
                     <div className={this.props.className}>
-                        <h3>Block: {block.name}</h3>
+                        <h3 style={{ paddingTop: 10 }}>Block: {block.name}</h3>
 
                         {!isSelected && !isInnerSelected ? (
                             <CustombergPreviewBlock block={block} attributes={this.props.attributes} />
@@ -309,23 +309,57 @@ window.CustombergEditFields = (block) => {
                         items.splice(index, 1);
                         onChange(items);
                     };
+                    const moveItem = (index, toIndex) => {
+                        let items = [...value];
+                        items.splice(toIndex, 0, items.splice(index, 1)[0]);
+                        onChange(items);
+                    };
+                    const duplicateItem = (index) => {
+                        let cloned = { ...value[index] };
+                        let items = [...value, cloned];
+                        items.splice(index + 1, 0, items.splice(items.length - 1, 1)[0]);
+                        onChange(items);
+                    };
                     let reachedMaxItems = false;
                     if (field.maxItems && value.length >= field.maxItems) {
                         reachedMaxItems = true;
                     }
                     return (
                         <div>
-                            <div>{field.label}</div>
+                            <label style={{ marginBottom: 0 }}>{field.label}</label>
                             <div>
                                 {value.map((item, index) => (
                                     <div key={field.name + index} style={styles.repeatableItem}>
-                                        <button
-                                            type="button"
-                                            onClick={() => deleteItem(index)}
-                                            style={styles.repeatableDeleteBtn}
-                                        >
-                                            X
-                                        </button>
+                                        <div style={styles.repeatableActions}>
+                                            <button
+                                                type="button"
+                                                onClick={() => deleteItem(index)}
+                                                style={styles.repeatableActionBtn}
+                                            >
+                                                <Dashicon icon="trash" />
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={() => moveItem(index, index - 1)}
+                                                style={styles.repeatableActionBtn}
+                                            >
+                                                <Dashicon icon="arrow-up-alt" />
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={() => moveItem(index, index + 1)}
+                                                style={styles.repeatableActionBtn}
+                                            >
+                                                <Dashicon icon="arrow-down-alt" />
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={() => duplicateItem(index)}
+                                                style={styles.repeatableActionBtn}
+                                            >
+                                                <Dashicon icon="admin-page" />
+                                            </button>
+                                        </div>
                                         {field.fields.map((subField, subIndex) => (
                                             <div key={subField.name + subIndex} style={{ padding: 4 }}>
                                                 {this.renderField(subField, item[subField.name], (value) => {
@@ -337,13 +371,14 @@ window.CustombergEditFields = (block) => {
                                 ))}
                             </div>
                             <div>
-                                <button
-                                    type="button"
+                                <Button
+                                    variant="primary"
+                                    style={{ borderRadius: 6 }}
                                     onClick={() => !reachedMaxItems && addItem()}
                                     disabled={reachedMaxItems}
                                 >
                                     Add item
-                                </button>
+                                </Button>
                             </div>
                         </div>
                     );
@@ -417,25 +452,34 @@ function ColorPickerField({ value, onChange }) {
 const styles = {
     repeatableItem: {
         border: '1px solid #ccc',
+        borderRadius: 6,
         padding: 10,
         paddingLeft: 40,
         marginBottom: 10,
         position: 'relative',
     },
-    repeatableDeleteBtn: {
-        webkitAppearance: 'none',
-        background: 'rgba(0, 0, 0, 0.05)',
-        border: 'none',
-        height: 26,
-        width: 26,
-        borderRadius: '100%',
-        fontFamily: 'monospace',
-        fontSize: 16,
-        verticalAlign: 'middle',
+    repeatableActions: {
         position: 'absolute',
         left: 5,
         top: '50%',
         transform: 'translateY(-50%)',
+        width: 26,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 6,
+    },
+    repeatableActionBtn: {
+        webkitAppearance: 'none',
+        background: 'rgba(0, 0, 0, 0.07)',
+        border: 'none',
+        height: 26,
+        width: 26,
+        padding: 0,
+        borderRadius: '100%',
+        fontFamily: 'monospace',
+        fontSize: 12,
+        verticalAlign: 'middle',
+        textAlign: 'center',
     },
     langButtonsContainer: {
         position: 'absolute',
