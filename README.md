@@ -1,4 +1,4 @@
-## Instalation
+# Instalation
 
 ```bash
 composer require customberg/customberg-php:"*"
@@ -31,7 +31,7 @@ CRUD::field('content')
     ->view_namespace('customberg::');
 ```
 
-## Update
+# Update
 
 After an update, get the latest assets using:
 
@@ -54,3 +54,22 @@ docker-compose exec nginx su app -c 'cd /app/example/public/; ln -s ../storage/a
 Navigate to http://localhost:8084 and press login.
 
 Enjoy !
+
+# Roadmap:
+
+|          |                                                       |
+| -------- | ----------------------------------------------------- |
+| &#x2610; | Make multilanguage configurable and fix ugly frontend |
+| &#x2610; | Fix repeatable frontend. Make more pretty             |
+| &#x2610; | A checkbox and a switch field                         |
+| &#x2610; | Radio field                                           |
+| &#x2610; | Slider field                                          |
+| &#x2610; | Google Maps field                                     |
+
+# Changelog:
+
+### v0.7
+
+-   First version published to packagist.org ! 🎉🥳
+-   Only available fields are: text, rich_text, color, upload_image
+-   Repeatable is present but untested. Multilanguage present but untested and hardcoded.
