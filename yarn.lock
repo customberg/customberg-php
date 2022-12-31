@@ -547,6 +547,11 @@ csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
   integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
 
+dashicons@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/dashicons/-/dashicons-0.0.2.tgz#bf883afff486a6a47c0fe863d1f7c86450f8dad5"
+  integrity sha512-yBtN1oQw7O8zq38/Jja2nJJ+lCKVpv6p7Q4CgSuQ1xlaUMJP3kn/fY3rZaHedOIZkBJI0Ym4wdVD8yR8ncYTYA==
+
 debug@^4.1.0:
   version "4.3.4"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"

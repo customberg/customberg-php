@@ -9,7 +9,7 @@ class BlockClass
         return [
             'name' => 'BlockClass',
             'slug' => '%slug%',
-            'icon' => 'universal-access-alt',
+            'icon' => 'block-default', // https://developer.wordpress.org/resource/dashicons/
             'fields' => [
                 // supported types are:
                 // text, rich_text, color, upload_image
@@ -24,7 +24,7 @@ class BlockClass
 
                 [
                     'name' => 'title',
-                    'label' => 'Titlu',
+                    'label' => 'Title',
                     'type' => 'text',
                 ],
             ],

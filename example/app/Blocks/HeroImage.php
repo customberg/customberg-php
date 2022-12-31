@@ -10,9 +10,9 @@ class HeroImage
     {
         $pages = Page::pluck('title', 'id');
         return [
-            'name' => 'HeroImage',
+            'name' => 'Hero Image',
             'slug' => 'cb-hero-image',
-            'icon' => 'universal-access-alt',
+            'icon' => 'block-default',
             'fields' => [
                 // supported types are:
                 // text, rich_text, color, upload_image

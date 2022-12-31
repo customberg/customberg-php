@@ -11,6 +11,7 @@
     },
     "dependencies": {
         "@vitejs/plugin-react": "^2.2.0",
+        "dashicons": "^0.0.2",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-select": "^5.6.1",

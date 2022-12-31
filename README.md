@@ -65,6 +65,8 @@ Enjoy !
 | &#x2610; | Radio field                                           |
 | &#x2610; | Slider field                                          |
 | &#x2610; | Google Maps field                                     |
+| &#x2610; | Documentation !                                       |
+| &#x2610; | Icon picker field                                     |
 
 # Changelog:
 
