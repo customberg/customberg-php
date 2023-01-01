@@ -6,7 +6,7 @@
     
     <div class="blockfeatures-features">
         <div class="blockfeatures-features-inner container">
-            @foreach ($features ?? [] as $item)
+            @foreach ($features ?: [] as $item)
                 <div class="blockfeatures-item">
                     <div class="blockfeatures-image">
                         <img class="blockfeatures-img" src="{{ asset($item['image']) }}" />

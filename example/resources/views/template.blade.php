@@ -23,7 +23,7 @@
         @stack('styles')
     </head>
     
-    <body class="page template-default page-{{ optional($page)->slug ?? '' }}">
+    <body class="page template-default page-{{ optional($page)->slug ?: '' }}">
         
         <div class="site-header">
             <div class="site-header-inner container">
@@ -46,7 +46,7 @@
                 </div>
                 <div class="language-switcher">
                     @php($config = Customberg::getConfig())
-                    @foreach ($config['languages'] ?? [] as $lang => $langName)
+                    @foreach ($config['languages'] ?: [] as $lang => $langName)
                         <a href="{{ route('lang', [$lang]) }}" class="{{ app()->getLocale() == $lang ? 'is-active' : '' }}">
                             {{ $langName }}
                         </a>

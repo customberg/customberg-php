@@ -23,6 +23,12 @@
     if (!isset($push_scripts) || !$push_scripts) {
         $push_scripts = 'scripts';
     }
+    $custombergConfig = [
+        'routes_preview' => route('customberg.preview'),
+        'routes_file_upload' => route('customberg.file_upload'),
+        'default_language' => $config['default_language'] ?: app()->getLocale(),
+        'languages' => $config['languages'],
+    ];
 @endphp
 
 <div class="laraberg-wrapper" style="width:100%; margin-bottom: 10px;">
@@ -49,10 +55,7 @@
     
     <script>
         jQuery(document).ready(function(){
-            window.CustombergConfig = @json([
-                'routes_preview' => route('customberg.preview'),
-                'routes_file_upload' => route('customberg.file_upload'),
-            ]);
+            window.CustombergConfig = @json($custombergConfig);
             {!! \Customberg\PHP\Customberg::loadBlocks() !!}
             Laraberg.init('laraberg-plugin', {
                 height: 1400,

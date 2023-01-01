@@ -26,6 +26,7 @@ class Features
                     'name' => 'title',
                     'label' => 'Title',
                     'type' => 'text',
+                    'multilanguage' => true,
                 ],
                 [
                     'name' => 'features',
@@ -41,11 +42,13 @@ class Features
                             'name' => 'name',
                             'label' => 'Feature name',
                             'type' => 'text',
+                            'multilanguage' => true,
                         ],
                         [
                             'name' => 'description',
                             'label' => 'Description',
                             'type' => 'rich_text',
+                            'multilanguage' => true,
                         ],
                     ],
                 ],

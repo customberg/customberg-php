@@ -57,17 +57,21 @@ Enjoy !
 
 # Roadmap:
 
-|          |                                                       |
-| -------- | ----------------------------------------------------- |
-| &#x2610; | Make multilanguage configurable and fix ugly frontend |
-| &#x2610; | A checkbox and a switch field                         |
-| &#x2610; | Radio field                                           |
-| &#x2610; | Slider field                                          |
-| &#x2610; | Google Maps field                                     |
-| &#x2610; | Documentation !                                       |
-| &#x2610; | Icon picker field                                     |
+|          |                               |
+| -------- | ----------------------------- |
+| &#x2610; | A checkbox and a switch field |
+| &#x2610; | Radio field                   |
+| &#x2610; | Slider field                  |
+| &#x2610; | Google Maps field             |
+| &#x2610; | Documentation !               |
+| &#x2610; | Icon picker field             |
 
 # Changelog:
+
+### v0.9 - 2023-01-01
+
+-   Multilanguage fine tuning, made configurable language list and bugfixing
+-   Multilanguage only supports fields `text` and `rich_text`, and works inside repeatable field.
 
 ### v0.8 - 2022-12-31
 
@@ -78,5 +82,5 @@ Enjoy !
 ### v0.7 - 2022-12-30
 
 -   First version published to packagist.org ! 🎉🥳
--   Only available fields are: text, rich_text, color, upload_image
+-   Only available fields are: `text, rich_text, color, upload_image`
 -   Repeatable is present but untested. Multilanguage present but untested and hardcoded.

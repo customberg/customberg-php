@@ -12,7 +12,7 @@ class CustombergController extends Controller
 {
     public function preview(Request $request)
     {
-        $activeLang = 'ro'; //app()->getLocale();
+        $config = Customberg::getConfig();
         $view = preg_replace('/[^a-zA-Z0-9\-\.]*/', '', $request->slug);
 
         // get multilanguage fields
@@ -42,11 +42,15 @@ class CustombergController extends Controller
         if (!$attributes) {
             $attributes = [];
         }
+        $activeLang = isset($attributes['activeLang'])
+            ? $attributes['activeLang']
+            : ($config['default_language'] ?:
+            app()->getLocale());
 
         foreach ($attributes as $attrName => &$value) {
             if (isset($multilanguageFields[$attrName])) {
                 if (gettype($value) == 'string') {
-                    $value = ['ro' => $value];
+                    $value = [$activeLang => $value];
                 }
                 $value = isset($value[$activeLang]) ? $value[$activeLang] : $value;
             }
@@ -57,7 +61,7 @@ class CustombergController extends Controller
                         foreach ($item as $subKey => &$subValue) {
                             if (isset($multilanguageFields["$attrName-$subKey"])) {
                                 if (gettype($subValue) == 'string') {
-                                    $subValue = ['ro' => $subValue];
+                                    $subValue = [$activeLang => $subValue];
                                 }
                                 $subValue = isset($subValue[$activeLang]) ? $subValue[$activeLang] : $subValue;
                             }
@@ -77,8 +81,8 @@ class CustombergController extends Controller
     public function file_upload(Request $request)
     {
         $config = Customberg::getConfig();
-        $disk = $config['upload']['disk'] ?? 'public';
-        $path = $config['upload']['path'] ?? '';
+        $disk = $config['upload']['disk'] ?: 'public';
+        $path = $config['upload']['path'] ?: '';
 
         $now = now();
         $pathVars = [

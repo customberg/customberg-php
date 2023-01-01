@@ -8,14 +8,7 @@ function CustombergPreviewBlock(props) {
 
         // put preview content in iframe
         loadEl.style.display = 'none';
-        iframeEl.contentWindow.document.body.innerHTML = `
-        <div>
-            ${content}
-            <style>
-                img { max-width: 100%; max-height: 100vh; height: auto !important; object-fit: contain; }
-            </style>
-        </div>
-        `;
+        iframeEl.contentWindow.document.body.innerHTML = content;
         iframeEl.contentWindow.document.body.style.overflow = 'hidden';
 
         // recalculate iframe height

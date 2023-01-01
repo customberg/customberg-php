@@ -6,6 +6,12 @@
             *, :after, :before {
                 box-sizing: border-box;
             }
+            img {
+                max-width: 100%;
+                max-height: 100vh;
+                height: auto !important;
+                object-fit: contain;
+            }
         </style>
         @stack('styles')
     </head>

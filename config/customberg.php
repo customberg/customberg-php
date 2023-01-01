@@ -7,7 +7,7 @@ return [
         'preview' => '/preview',
         'file_upload' => '/file-upload',
     ],
-    'default_language' => 'en',
+    'default_language' => 'en', // use null to use laravel locale instead
     'languages' => [
         'en' => 'English',
         'ro' => 'Romanian',

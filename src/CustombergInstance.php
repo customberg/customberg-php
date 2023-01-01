@@ -81,24 +81,27 @@ class CustombergInstance
             $attributesJson = json_encode($calculateAttributes($block['fields'], $calculateAttributes));
             $blockJson = json_encode($block);
             $init .= "
-                if (typeof window.CustombergEditFields != 'undefined') {
-                    window.Laraberg.registerBlockType('cb/{$block['slug']}', {
-                        title: '{$block['name']}',
-                        icon: '{$block['icon']}',
-                        category: 'customberg',
-                        attributes: $attributesJson,
-                        edit: window.CustombergEditFields($blockJson),
-                        save: function (props) { return null; },
-                    });
-                }
+                window.Laraberg.registerBlockType('cb/{$block['slug']}', {
+                    title: '{$block['name']}',
+                    icon: '{$block['icon']}',
+                    category: 'customberg',
+                    attributes: $attributesJson,
+                    edit: window.CustombergEditFields($blockJson),
+                    save: function (props) { return null; },
+                });
             ";
         }
-        return $init;
+        return "
+            if (typeof window.CustombergEditFields != 'undefined') {
+                $init
+            }
+        ";
     }
 
     public function render($html, $lang = null)
     {
-        $activeLang = $lang ? $lang : app()->getLocale();
+        $config = $this->getConfig();
+        $activeLang = $lang ?: (app()->getLocale() ?: $config['default_language']);
         $html = str_replace('-->', "-->\n", $html);
 
         function str_replace_limit($find, $replacement, $subject, $limit = 0)
@@ -149,12 +152,12 @@ class CustombergInstance
                                 isset($multilanguageFields[$blockSlug][$attrName])
                             ) {
                                 if (gettype($value) == 'string') {
-                                    $value = ['ro' => $value];
+                                    $value = [$activeLang => $value];
                                 }
                                 $value = isset($value[$activeLang])
                                     ? $value[$activeLang]
-                                    : (isset($value['ro'])
-                                        ? $value['ro']
+                                    : (isset($value[$config['default_language']])
+                                        ? $value[$config['default_language']]
                                         : '');
                             }
                             if (isset($repeatableFields[$blockSlug][$attrName])) {
@@ -164,12 +167,12 @@ class CustombergInstance
                                         foreach ($item as $subKey => &$subValue) {
                                             if (isset($multilanguageFields[$blockSlug]["$attrName-$subKey"])) {
                                                 if (gettype($subValue) == 'string') {
-                                                    $subValue = ['ro' => $subValue];
+                                                    $subValue = [$activeLang => $subValue];
                                                 }
                                                 $subValue = isset($subValue[$activeLang])
                                                     ? $subValue[$activeLang]
-                                                    : (isset($subValue['ro'])
-                                                        ? $subValue['ro']
+                                                    : (isset($subValue[$config['default_language']])
+                                                        ? $subValue[$config['default_language']]
                                                         : '');
                                             }
                                         }
