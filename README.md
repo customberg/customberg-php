@@ -1,6 +1,6 @@
 Demo GIF
 
-<img src="https://i.imgur.com/5BnkQUl.gif" />
+<img src="customberg-demo.gif?raw=true">
 
 # Instalation
 
