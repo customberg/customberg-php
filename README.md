@@ -1,3 +1,7 @@
+Demo GIF
+
+<img src="https://i.imgur.com/5BnkQUl.gif" />
+
 # Instalation
 
 ```bash
