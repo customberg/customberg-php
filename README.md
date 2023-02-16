@@ -15,6 +15,8 @@ php artisan vendor:publish --provider="VanOns\Laraberg\LarabergServiceProvider"
 php artisan vendor:publish --provider="Customberg\PHP\CustombergServiceProvider"
 ```
 
+# Usage
+
 The model that you want to use this block editor should have:
 
 ```php
