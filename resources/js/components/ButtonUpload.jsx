@@ -103,7 +103,9 @@ class ButtonUpload extends Component {
                             <p style={{ marginBottom: 10, paddingLeft: 12 }}>Drop the image here</p>
                             <DropZone onFilesDrop={(files) => this.upload(files)} />
                             <FormFileUpload
-                                accept="image/*"
+                                // docs: https://github.com/WordPress/gutenberg/tree/%40wordpress/components%4019.11.0/packages/components/src/form-file-upload
+                                accept={this.props?.allowed_types?.map?.(ext => '.'+ext).join(',')}
+                                onClick={(event) => (event.target.value = '' )} // this allows selecting the same file twice
                                 onChange={(event) => this.upload(event.currentTarget.files)}
                             >
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>

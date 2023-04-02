@@ -4,6 +4,7 @@ namespace Customberg\PHP;
 
 use Spatie\Macroable\Macroable;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\View;
 
 class CustombergInstance
 {
@@ -43,7 +44,9 @@ class CustombergInstance
     public function loadBlocks()
     {
         $init = '';
+        $config = Customberg::getConfig();
         $langs = array_keys(config('customberg.languages'));
+        $default_allowed_types = optional($config['upload'])['default_allowed_types'] ?: [];
         foreach ($this->getBlocks() as $block) {
             $blockDotMap = Arr::dot($block);
             $block['multilanguage'] = false;
@@ -84,7 +87,10 @@ class CustombergInstance
             foreach ($blockDotMap as $key => $value) {
                 if (in_array($value, ['upload_image', 'upload_file'], true)) {
                     $base_path = str_replace('.type', '', $key);
-                    data_fill($block, "$base_path.self_path", $base_path);
+                    data_set($block, "$base_path.self_path", $base_path);
+                    if (!data_get($block, "$base_path.allowed_types", null)) {
+                        data_set($block, "$base_path.allowed_types", $default_allowed_types);
+                    }
                 }
             }
             $blockJson = json_encode($block);
@@ -153,7 +159,7 @@ class CustombergInstance
                 $attributes = json_decode($matched_block[2], true);
                 if (isset($matched_block[1]) && strpos($matched_block[1], $block_prefix) === 0) {
                     $blockSlug = substr($matched_block[1], strlen($block_prefix));
-                    if (\View::exists('blocks.' . $blockSlug)) {
+                    if (View::exists('blocks.' . $blockSlug)) {
                         foreach ($attributes as $attrName => &$value) {
                             if (
                                 isset($multilanguageFields[$blockSlug]) &&

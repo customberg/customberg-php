@@ -156,6 +156,7 @@ window.CustombergEditFields = (block) => {
                                 value={value} onChange={(items) => onChange(items)}
                                 self_path={field.self_path}
                                 block_slug={block.slug}
+                                allowed_types={field.allowed_types}
                             />
                         </div>
                     );

@@ -35,6 +35,7 @@ class Pm extends Wm {
     i.value != this.props.value && this.setState({ value: this.props.value });
   }
   render() {
+    var s, o, c;
     let i = "";
     return this.state.value && (i = ("" + this.state.value).split("/").pop()), /* @__PURE__ */ React.createElement(
       "div",
@@ -62,11 +63,12 @@ class Pm extends Wm {
         },
         this.state.value ? /* @__PURE__ */ React.createElement("img", { src: this.state.value, style: { width: "100%", height: "100%", objectFit: "contain" } }) : /* @__PURE__ */ React.createElement("div", { style: { width: "100%", height: "100%", display: "flex" } }, this.state.loading ? /* @__PURE__ */ React.createElement("div", { className: "customberg-bt-spinner", style: { margin: "auto" } }) : null)
       ),
-      /* @__PURE__ */ React.createElement("div", { style: { flexGrow: 1 } }, this.state.value ? /* @__PURE__ */ React.createElement("div", { style: { padding: 20 } }, /* @__PURE__ */ React.createElement("b", { style: { display: "block", marginBottom: 6 } }, i), /* @__PURE__ */ React.createElement("small", null, this.state.value), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "row", marginTop: 6 } }, /* @__PURE__ */ React.createElement(ol, { variant: "secondary", style: { borderRadius: 6 }, onClick: (s) => this.remove(s) }, "Remove"))) : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("p", { style: { marginBottom: 10, paddingLeft: 12 } }, "Drop the image here"), /* @__PURE__ */ React.createElement(Vm, { onFilesDrop: (s) => this.upload(s) }), /* @__PURE__ */ React.createElement(
+      /* @__PURE__ */ React.createElement("div", { style: { flexGrow: 1 } }, this.state.value ? /* @__PURE__ */ React.createElement("div", { style: { padding: 20 } }, /* @__PURE__ */ React.createElement("b", { style: { display: "block", marginBottom: 6 } }, i), /* @__PURE__ */ React.createElement("small", null, this.state.value), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "row", marginTop: 6 } }, /* @__PURE__ */ React.createElement(ol, { variant: "secondary", style: { borderRadius: 6 }, onClick: (g) => this.remove(g) }, "Remove"))) : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("p", { style: { marginBottom: 10, paddingLeft: 12 } }, "Drop the image here"), /* @__PURE__ */ React.createElement(Vm, { onFilesDrop: (g) => this.upload(g) }), /* @__PURE__ */ React.createElement(
         Om,
         {
-          accept: "image/*",
-          onChange: (s) => this.upload(s.currentTarget.files)
+          accept: (c = (o = (s = this.props) == null ? void 0 : s.allowed_types) == null ? void 0 : o.map) == null ? void 0 : c.call(o, (g) => "." + g).join(","),
+          onClick: (g) => g.target.value = "",
+          onChange: (g) => this.upload(g.currentTarget.files)
         },
         /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "row" } }, /* @__PURE__ */ React.createElement(ol, { variant: "secondary", style: { borderRadius: 6 } }, "Or click Upload"))
       )))
@@ -8070,7 +8072,8 @@ window.CustombergEditFields = (u) => SC((r, i) => {
             value: s,
             onChange: (g) => o(g),
             self_path: i.self_path,
-            block_slug: u.slug
+            block_slug: u.slug,
+            allowed_types: i.allowed_types
           }
         ));
       if (i.type == "select") {
