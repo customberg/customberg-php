@@ -3,6 +3,7 @@
 namespace Customberg\PHP;
 
 use Spatie\Macroable\Macroable;
+use Illuminate\Support\Arr;
 
 class CustombergInstance
 {
@@ -44,27 +45,12 @@ class CustombergInstance
         $init = '';
         $langs = array_keys(config('customberg.languages'));
         foreach ($this->getBlocks() as $block) {
+            $blockDotMap = Arr::dot($block);
             $block['multilanguage'] = false;
             $calculateAttributes = function ($fields, $calculateAttributes) use ($langs, &$block) {
                 $attributes = [];
                 foreach ($fields as $field) {
                     $definition = [];
-                    if (in_array($field['type'], ['text', 'upload_image'])) {
-                        $definition = [
-                            'type' => 'string',
-                        ];
-                    }
-                    if (isset($field['multilanguage']) && $field['multilanguage']) {
-                        $block['multilanguage'] = true;
-                        $props = [];
-                        foreach ($langs as $lang) {
-                            $props[$lang] = $definition;
-                        }
-                        $definition = [
-                            'type' => 'object',
-                            'properties' => $props,
-                        ];
-                    }
                     if ($field['type'] == 'repeatable') {
                         $definition = [
                             'type' => 'array',
@@ -73,12 +59,34 @@ class CustombergInstance
                                 'properties' => $calculateAttributes($field['fields'], $calculateAttributes),
                             ],
                         ];
+                    } else {
+                        $definition = [
+                            'type' => 'string',
+                        ];
+                        if (isset($field['multilanguage']) && $field['multilanguage']) {
+                            $block['multilanguage'] = true;
+                            $props = [];
+                            foreach ($langs as $lang) {
+                                $props[$lang] = $definition;
+                            }
+                            $definition = [
+                                'type' => 'object',
+                                'properties' => $props,
+                            ];
+                        }
                     }
                     $attributes[$field['name']] = $definition;
                 }
                 return $attributes;
             };
             $attributesJson = json_encode($calculateAttributes($block['fields'], $calculateAttributes));
+            // add self_path to some fields for validation purposes
+            foreach ($blockDotMap as $key => $value) {
+                if (in_array($value, ['upload_image', 'upload_file'], true)) {
+                    $base_path = str_replace('.type', '', $key);
+                    data_fill($block, "$base_path.self_path", $base_path);
+                }
+            }
             $blockJson = json_encode($block);
             $init .= "
                 window.Laraberg.registerBlockType('cb/{$block['slug']}', {

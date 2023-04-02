@@ -7,7 +7,7 @@ return [
         'preview' => '/preview',
         'file_upload' => '/file-upload',
     ],
-    'default_language' => 'en', // use null to use laravel locale instead
+    'default_language' => null, // use null to use laravel locale instead
     'languages' => [
         'en' => 'English',
         'ro' => 'Romanian',
@@ -19,5 +19,16 @@ return [
     'upload' => [
         'disk' => 'public',
         'path' => 'blocks/{Y}/{m}',
+        // prettier-ignore
+        'default_allowed_types' => [
+            // images
+            'png', 'jpg', 'jpeg', 'gif', 'webp', 'svg', 'bmp',
+            // video
+            'mp4', 'webm', 'mkv', 'flv', 'avi', 'mov', 'm4p', 'mpeg', 'm4v',
+            // documents
+            'pdf', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'txt', 'xml',
+            // archives
+            // 'zip', 'tar', 'bz', 'bz2', 'rar',
+        ],
     ],
 ];

@@ -12,12 +12,24 @@ class ButtonUpload extends Component {
 
     upload = (files) => {
         this.setState({ loading: true });
+        const options = { data: {} };
+        if (this.props?.block_slug) {
+            options.data.block_slug = this.props?.block_slug;
+        }
+        if (this.props?.self_path) {
+            options.data.self_path = this.props?.self_path;
+        }
         window
-            .CustombergUploadAction(files)
+            .CustombergUploadAction(files, options)
             .then((data) => {
                 this.setState({ loading: false });
-                if (data && data.length > 0) {
-                    this.props?.onChange?.(data[0]);
+                if (data?.files && data.files?.length > 0) {
+                    this.props?.onChange?.(data.files[0]);
+                }
+                if (data.errors?.length > 0) {
+                    data.errors.forEach(error => {
+                        new Noty({ type: 'error', text: error }).show();
+                    });
                 }
             })
             .catch((error) => {

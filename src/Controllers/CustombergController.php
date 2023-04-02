@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Customberg\PHP\Customberg;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class CustombergController extends Controller
@@ -92,9 +93,36 @@ class CustombergController extends Controller
         ];
         $path = str_replace(array_keys($pathVars), array_values($pathVars), $path);
 
+        $block_slug = $request->get('block_slug', null);
+        $self_path = $request->get('self_path', null);
+        $block = null;
+        $field = null;
+        if ($block_slug) {
+            $allBocks = Customberg::getBlocks();
+            foreach ($allBocks as $item) {
+                if ($item['slug'] == $block_slug) {
+                    $block = $item;
+                    $field = $self_path ? data_get($block, $self_path, null) : null;
+                }
+            }
+        }
+        // prettier-ignore
+        $allowed_types = $field && isset($field['allowed_types'])
+            ? $field['allowed_types']
+            : (optional($config['upload'])['default_allowed_types'] ?: []);
+
         $urls = [];
+        $errors = [];
         if ($request->file('files')) {
             foreach ($request->file('files') as $file) {
+                $validator = Validator::make(
+                    ['file' => $file],
+                    ['file' => ['file', 'mimes:' . implode(',', $allowed_types)]]
+                );
+                if ($validator->fails()) {
+                    $errors[] = $validator->errors()->first('file');
+                    continue;
+                }
                 $ext = '.' . $file->getClientOriginalExtension();
                 $originalFileName = $fileName = Str::slug(str_replace($ext, '', $file->getClientOriginalName()));
                 $uniqueCount = 1;
@@ -105,6 +133,10 @@ class CustombergController extends Controller
                 array_push($urls, "/storage/$path/$fileName$ext");
             }
         }
-        return $urls;
+        return [
+            'success' => true,
+            'files' => $urls,
+            'errors' => $errors,
+        ];
     }
 }

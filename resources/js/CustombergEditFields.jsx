@@ -26,8 +26,8 @@ window.CustombergEditFields = (block) => {
             }
 
             componentDidMount() {
-                console.log('PROPS: ', this.props);
-                console.log('BLOCK: ', block);
+                // console.log('PROPS: ', this.props);
+                // console.log('BLOCK: ', block);
                 const { activeLang } = this.props.attributes;
                 let attributes = cloneDeep(this.props.attributes);
 
@@ -152,7 +152,11 @@ window.CustombergEditFields = (block) => {
                     return (
                         <div style={{ width: '100%', marginBottom: '0.5rem' }}>
                             <label style={{ marginBottom: 0 }}>{field.label}</label>
-                            <ButtonUpload value={value} onChange={(items) => onChange(items)} />
+                            <ButtonUpload
+                                value={value} onChange={(items) => onChange(items)}
+                                self_path={field.self_path}
+                                block_slug={block.slug}
+                            />
                         </div>
                     );
                 }
@@ -260,7 +264,6 @@ window.CustombergEditFields = (block) => {
                         } else {
                             items[index][subField.name] = subValue;
                         }
-                        console.log('updateitem', items);
                         onChange(items);
                     };
                     const deleteItem = (index) => {

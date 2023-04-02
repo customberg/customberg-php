@@ -37,6 +37,7 @@ class Features
                             'name' => 'image',
                             'label' => 'Feature image',
                             'type' => 'upload_image',
+                            'allowed_types' => ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'],
                         ],
                         [
                             'name' => 'name',
@@ -49,6 +50,12 @@ class Features
                             'label' => 'Description',
                             'type' => 'rich_text',
                             'multilanguage' => true,
+                        ],
+                        [
+                            'name' => 'info',
+                            'label' => 'Information pdf file',
+                            'type' => 'upload_file',
+                            'allowed_types' => ['pdf'],
                         ],
                     ],
                 ],

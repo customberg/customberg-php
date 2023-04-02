@@ -63,15 +63,21 @@
                     window.CustombergUploadAction(upload.filesList)
                     .then(function (data) {
                         var files = [];
-                        for (var i = 0; i < data.length; i++) {
-                            var name = (''+data[i]).split('/').pop();
+                        if (data?.files?.length > 0)
+                        for (var i = 0; i < data?.files?.length; i++) {
+                            var name = (''+data.files[i]).split('/').pop();
                             files.push({
-                                id: '',// + Date.now() + data[i],
+                                id: '', // + Date.now() + data.files[i],
                                 name: name,
-                                url: data[i],
+                                url: data.files[i],
                             })
                         }
                         upload.onFileChange(files);
+                        if (data.errors?.length > 0) {
+                            data.errors.forEach(error => {
+                                new Noty({ type: 'error', text: error }).show();
+                            });
+                        }
                     })
                     .catch(function (error) {
                         upload.onError(error.message)
