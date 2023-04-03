@@ -25,8 +25,10 @@ return [
             'png', 'jpg', 'jpeg', 'gif', 'webp', 'svg', 'bmp',
             // video
             'mp4', 'webm', 'mkv', 'flv', 'avi', 'mov', 'm4p', 'mpeg', 'm4v',
+            // audio
+            'mp3', 'flac', 'm4a', 'wav', 'wma', 'aac',
             // documents
-            'pdf', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'txt', 'xml',
+            'pdf', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'txt', 'xml', 'csv',
             // archives
             // 'zip', 'tar', 'bz', 'bz2', 'rar',
         ],

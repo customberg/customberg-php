@@ -148,15 +148,18 @@ window.CustombergEditFields = (block) => {
                     );
                 }
 
-                if (field.type == 'upload_image') {
+                if (field.type == 'upload_image' || field.type == 'upload_file') {
                     return (
                         <div style={{ width: '100%', marginBottom: '0.5rem' }}>
                             <label style={{ marginBottom: 0 }}>{field.label}</label>
                             <ButtonUpload
-                                value={value} onChange={(items) => onChange(items)}
+                                type={field.type == 'upload_image' ? 'image' : 'file'}
+                                value={value}
+                                onChange={(items) => onChange(items)}
                                 self_path={field.self_path}
                                 block_slug={block.slug}
                                 allowed_types={field.allowed_types}
+                                multiple={field.type == 'upload_file' && field.multiple ? true : false}
                             />
                         </div>
                     );

@@ -12,9 +12,10 @@ class Features
             'icon' => 'editor-ol',
             'fields' => [
                 // supported types are:
-                // text, rich_text, color, upload_image
-                // repeatable ( 'fields' => [  ] )
-                // select (
+                // 'text', 'rich_text', 'color',
+                // 'upload_image' or 'upload_file' (accepts 'allowed_types' as array with file extensions, only file supports multiple=true)
+                // 'repeatable' ( 'fields' => [  ] )
+                // 'select' (
                 //     'placeholder' => 'string',
                 //     'multiple' => true/false,
                 //     'disabled' => true/false,
@@ -53,9 +54,10 @@ class Features
                         ],
                         [
                             'name' => 'info',
-                            'label' => 'Information pdf file',
+                            'label' => 'Information PDF file',
                             'type' => 'upload_file',
-                            'allowed_types' => ['pdf'],
+                            'allowed_types' => ['pdf', 'txt', 'doc', 'docx', 'csv'],
+                            'multiple' => true,
                         ],
                     ],
                 ],

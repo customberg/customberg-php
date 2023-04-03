@@ -74,6 +74,13 @@ Enjoy !
 
 # Changelog:
 
+### v0.10 - 2023-04-02
+
+-   Added file extension validation to `upload_image`.
+    <br />Use `'allowed_types' => ['png', 'jpg', 'webp', 'svg'],`
+-   Added `upload_file` for files without preview.
+    <br />Use `'multiple' => true,` if you want multiple files in the same field.
+
 ### v0.9 - 2023-01-01
 
 -   Multilanguage fine tuning, made configurable language list and bugfixing
