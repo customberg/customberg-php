@@ -118,14 +118,6 @@ class CustombergInstance
         $activeLang = $lang ?: (app()->getLocale() ?: $config['default_language']);
         $html = str_replace('-->', "-->\n", $html);
 
-        function str_replace_limit($find, $replacement, $subject, $limit = 0)
-        {
-            if ($limit == 0) {
-                return str_replace($find, $replacement, $subject);
-            }
-            return preg_replace('/' . preg_quote($find, '/') . '/', $replacement, $subject, $limit);
-        }
-
         $block_prefix = 'cb/';
         preg_match_all('/\<\!\-\-\s*wp\:([^\ ]+)\s*(.*)\s+\/?\-\-\>/i', $html, $blocks_found, PREG_SET_ORDER);
 
@@ -205,4 +197,11 @@ class CustombergInstance
 
         return $html;
     }
+}
+
+function str_replace_limit($find, $replacement, $subject, $limit = 0) {
+    if ($limit == 0) {
+        return str_replace($find, $replacement, $subject);
+    }
+    return preg_replace('/' . preg_quote($find, '/') . '/', $replacement, $subject, $limit);
 }
