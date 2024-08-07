@@ -74,6 +74,10 @@ Enjoy !
 
 # Changelog:
 
+### v0.11 - 2024-08-07
+
+-   Bugfix: Preview API while rendering a block with multilanguage, when i'm selecting the new language that does not have translation saved.
+
 ### v0.10 - 2023-04-02
 
 -   Added file extension validation to `upload_image`.

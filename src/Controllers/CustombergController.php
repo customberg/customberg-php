@@ -64,7 +64,11 @@ class CustombergController extends Controller
                                 if (gettype($subValue) == 'string') {
                                     $subValue = [$activeLang => $subValue];
                                 }
-                                $subValue = isset($subValue[$activeLang]) ? $subValue[$activeLang] : $subValue;
+                                $subValue = isset($subValue[$activeLang])
+                                    ? $subValue[$activeLang]
+                                    : (isset($subValue[$config['default_language']])
+                                        ? $subValue[$config['default_language']]
+                                        : '');
                             }
                         }
                     }
