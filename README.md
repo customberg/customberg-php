@@ -74,9 +74,21 @@ Enjoy !
 
 # Changelog:
 
-### v0.11 - 2024-08-07
+### v0.14 - 2024-08-07
 
 -   Bugfix: Preview API while rendering a block with multilanguage, when i'm selecting the new language that does not have translation saved.
+
+### v0.13 - 2024-07-08
+
+-   Allow laravel 11 installation
+
+### v0.12 - 2023-11-09
+
+-   Bugfix error cannot redeclare str_replace_limit
+
+### v0.11 - 2023-11-08
+
+-   Update requirements to laravel 10
 
 ### v0.10 - 2023-04-02
 
