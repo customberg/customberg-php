@@ -8,12 +8,6 @@
             "Customberg\\PHP\\": "src/"
         }
     },
-    "authors": [
-        {
-            "name": "Andrei Telteu",
-            "email": "andrei@telteu.ro"
-        }
-    ],
     "require": {
         "php": "^8.0 | ^8.1 | ^8.2 | ^8.3",
         "spatie/laravel-package-tools": "^1.13.0",
@@ -21,6 +15,9 @@
         "illuminate/contracts": "^9.0 | ^10.0 | ^11.0",
         "spatie/macroable": "^2.0",
         "van-ons/laraberg": "^2.0.0"
+    },
+    "archive": {
+        "exclude": ["/example/", "/customberg-demo.gif"]
     },
     "extra": {
         "laravel": {
@@ -32,6 +29,12 @@
             }
         }
     },
+    "authors": [
+        {
+            "name": "Andrei Telteu",
+            "email": "andrei@telteu.ro"
+        }
+    ],
     "keywords": [
         "laravel",
         "customberg",
