@@ -112,6 +112,12 @@ window.CustombergEditFields = (block) => {
                                                     });
                                                 } else this.props.setAttributes({ [field.name]: value });
                                             })}
+                                            {field.type != 'repeatable' && field.hint ? (
+                                                <div style={{ marginBottom: '.5rem', marginTop: '-0.3rem', fontSize: '15px' }}>{field.hint}</div>
+                                            ) : null}
+                                            {field.type != 'repeatable' && field.hint_html ? (
+                                                <div style={{ marginBottom: '.5rem', marginTop: '-0.3rem', fontSize: '15px' }} dangerouslySetInnerHTML={{ __html: field.hint_html }}></div>
+                                            ) : null}
                                         </div>
                                     ))}
                                 </div>
@@ -332,6 +338,12 @@ window.CustombergEditFields = (block) => {
                     return (
                         <div>
                             <label style={{ marginBottom: 0 }}>{field.label}</label>
+                            {field.hint ? (
+                                <div style={{ marginBottom: '4px', fontSize: '15px' }}>{field.hint}</div>
+                            ) : null}
+                            {field.hint_html ? (
+                                <div style={{ marginBottom: '4px', fontSize: '15px' }} dangerouslySetInnerHTML={{ __html: field.hint_html }}></div>
+                            ) : null}
                             <div>
                                 {value.map((item, index) => (
                                     <div key={field.name + index} style={styles.repeatableItem}>
@@ -370,6 +382,12 @@ window.CustombergEditFields = (block) => {
                                                 {this.renderField(subField, item[subField.name], (value) => {
                                                     updateItem(subField, index, value);
                                                 })}
+                                                {subField.type != 'repeatable' && subField.hint ? (
+                                                    <div style={{ marginBottom: '.5rem', marginTop: '-0.3rem', fontSize: '15px' }}>{subField.hint}</div>
+                                                ) : null}
+                                                {subField.type != 'repeatable' && subField.hint_html ? (
+                                                    <div style={{ marginBottom: '.5rem', marginTop: '-0.3rem', fontSize: '15px' }} dangerouslySetInnerHTML={{ __html: subField.hint_html }}></div>
+                                                ) : null}
                                             </div>
                                         ))}
                                     </div>
