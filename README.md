@@ -15,7 +15,7 @@ php artisan vendor:publish --provider="VanOns\Laraberg\LarabergServiceProvider"
 php artisan vendor:publish --provider="Customberg\PHP\CustombergServiceProvider"
 ```
 
-# Usage
+# Model Setup
 
 The model that you want to use this block editor should have:
 
@@ -36,6 +36,18 @@ CRUD::field('content')
     ->type('customberg')
     ->view_namespace('customberg::');
 ```
+
+# Usage
+
+Create a new block with the `make:block` command:
+
+```bash
+php artisan make:block AwesomeBlock
+```
+
+Then edit the block field definition in `app/Blocks/AwesomeBlock.php` file, and the block view in `resources/views/blocks/cb-awesome-block.blade.php`.
+
+Checkout [/example/app/Blocks/EverySingleField.php](https://github.com/customberg/customberg-php/blob/main/example/app/Blocks/EverySingleField.php) for a full example with every field type.
 
 # Update
 
@@ -63,16 +75,24 @@ Enjoy !
 
 # Roadmap:
 
-|          |                               |
-| -------- | ----------------------------- |
-| &#x2610; | A checkbox and a switch field |
-| &#x2610; | Radio field                   |
-| &#x2610; | Slider field                  |
-| &#x2610; | Google Maps field             |
-| &#x2610; | Documentation !               |
-| &#x2610; | Icon picker field             |
+|          |                   |
+| -------- | ----------------- |
+| ✅       | A checkbox field  |
+| &#x2610; | Switch field      |
+| &#x2610; | Radio field       |
+| &#x2610; | Slider field      |
+| &#x2610; | Google Maps field |
+| &#x2610; | Documentation !   |
+| &#x2610; | Icon picker field |
 
 # Changelog:
+
+### v0.15 - 2024-09-26
+
+-   New field types: `checkbox`, `textarea`, `number`, `email`, `url`
+-   New property `placeholder` for text fields
+-   New property `hint` and `hint_html` for all fields that show a small helper text
+-   Checkout [/example/app/Blocks/EverySingleField.php](https://github.com/customberg/customberg-php/blob/main/example/app/Blocks/EverySingleField.php) for a full example
 
 ### v0.14 - 2024-08-07
 

@@ -95,14 +95,18 @@ class CustombergInstance
             }
             $blockJson = json_encode($block);
             $init .= "
-                window.Laraberg.registerBlockType('cb/{$block['slug']}', {
-                    title: '{$block['name']}',
-                    icon: '{$block['icon']}',
-                    category: 'customberg',
-                    attributes: $attributesJson,
-                    edit: window.CustombergEditFields($blockJson),
-                    save: function (props) { return null; },
-                });
+                try {
+                    window.Laraberg.registerBlockType('cb/{$block['slug']}', {
+                        title: '{$block['name']}',
+                        icon: '{$block['icon']}',
+                        category: 'customberg',
+                        attributes: $attributesJson,
+                        edit: window.CustombergEditFields($blockJson),
+                        save: function (props) { return null; },
+                    });
+                } catch (e) {
+                    console.error('Error registering block: cb/{$block['slug']}', e.message, { e });
+                }
             ";
         }
         return "
@@ -199,7 +203,8 @@ class CustombergInstance
     }
 }
 
-function str_replace_limit($find, $replacement, $subject, $limit = 0) {
+function str_replace_limit($find, $replacement, $subject, $limit = 0)
+{
     if ($limit == 0) {
         return str_replace($find, $replacement, $subject);
     }
