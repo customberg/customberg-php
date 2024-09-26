@@ -115,6 +115,7 @@ window.CustombergEditFields = (block) => {
                                         </div>
                                     ))}
                                 </div>
+                                {/* <pre>{JSON.stringify(this.props.attributes, null, 2)}</pre> */}
                             </>
                         )}
                     </div>
@@ -129,17 +130,55 @@ window.CustombergEditFields = (block) => {
                     }
                 }
 
-                if (field.type == 'text') {
+                if (field.type == 'text' || field.type == 'number' || field.type == 'email' || field.type == 'url') {
                     return (
                         <label style={{ width: '100%' }}>
                             <div>{field.label}</div>
                             <input
-                                type="text"
+                                type={field.type}
                                 value={field.multilanguage ? value[activeLang] : value}
+                                placeholder={field.placeholder || undefined}
                                 onChange={(e) => onChange(e.target.value)}
                                 style={{
                                     width: '100%',
                                     padding: '5px 10px',
+                                    borderRadius: 6,
+                                    border: '1px solid #ccc',
+                                }}
+                            />
+                        </label>
+                    );
+                }
+                
+                if (field.type == 'checkbox') {
+                    return (
+                        <label style={{ width: '100%' }}>
+                            <input
+                                type="checkbox"
+                                checked={field.multilanguage ? value[activeLang] : value}
+                                onChange={(e) => onChange(e.target.checked)}
+                                style={{
+                                    marginRight: '10px',
+                                }}
+                            />
+                            <span>{field.label}</span>
+                        </label>
+                    );
+                }
+
+                if (field.type == 'textarea') {
+                    return (
+                        <label style={{ width: '100%' }}>
+                            <div>{field.label}</div>
+                            <textarea
+                                value={field.multilanguage ? value[activeLang] : value}
+                                onChange={(e) => onChange(e.target.value)}
+                                placeholder={field.placeholder || undefined}
+                                style={{
+                                    width: '100%',
+                                    padding: '5px 10px',
+                                    resize: 'none',
+                                    height: '6rem',
                                     borderRadius: 6,
                                     border: '1px solid #ccc',
                                 }}

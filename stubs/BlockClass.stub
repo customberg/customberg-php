@@ -12,7 +12,7 @@ class BlockClass
             'icon' => 'block-default', // https://developer.wordpress.org/resource/dashicons/
             'fields' => [
                 // supported types are:
-                // 'text', 'rich_text', 'color',
+                // 'text', 'textarea', 'rich_text', 'color', 'checkbox',
                 // 'upload_image' or 'upload_file' (accepts 'allowed_types' as array with file extensions, only file supports multiple=true)
                 // 'repeatable' ( 'fields' => [  ] )
                 // 'select' (
