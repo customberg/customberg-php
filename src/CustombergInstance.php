@@ -142,6 +142,14 @@ class CustombergInstance
                         if (isset($subField['multilanguage']) && $subField['multilanguage']) {
                             $multilanguageFields[$block_data['slug']]["{$field['name']}-{$subField['name']}"] = true;
                         }
+                        if ($subField['type'] == 'repeatable') {
+                            $repeatableFields[$block_data['slug']]["{$field['name']}-{$subField['name']}"] = true;
+                            foreach ($subField['fields'] as $subsubField) {
+                                if (isset($subsubField['multilanguage']) && $subsubField['multilanguage']) {
+                                    $multilanguageFields[$block_data['slug']]["{$field['name']}-{$subField['name']}-{$subsubField['name']}"] = true;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -157,10 +165,7 @@ class CustombergInstance
                     $blockSlug = substr($matched_block[1], strlen($block_prefix));
                     if (View::exists('blocks.' . $blockSlug)) {
                         foreach ($attributes as $attrName => &$value) {
-                            if (
-                                isset($multilanguageFields[$blockSlug]) &&
-                                isset($multilanguageFields[$blockSlug][$attrName])
-                            ) {
+                            if (isset($multilanguageFields[$blockSlug]) && isset($multilanguageFields[$blockSlug][$attrName])) {
                                 if (gettype($value) == 'string') {
                                     $value = [$activeLang => $value];
                                 }
@@ -175,6 +180,27 @@ class CustombergInstance
                                 if (gettype($value) == 'array') {
                                     foreach ($value as &$item) {
                                         foreach ($item as $subKey => &$subValue) {
+                                            if (isset($repeatableFields[$blockSlug]["$attrName-$subKey"])) {
+                                                if (gettype($subValue) == 'array') {
+                                                    foreach ($subValue as &$subItem) {
+                                                        foreach ($subItem as $subsubKey => &$subsubValue) {
+                                                            if (isset($multilanguageFields[$blockSlug]["$attrName-$subKey-$subsubKey"])) {
+                                                                if (gettype($subsubValue) == 'string') {
+                                                                    $subsubValue = [$activeLang => $subsubValue];
+                                                                }
+                                                                $subsubValue = isset($subsubValue[$activeLang])
+                                                                    ? $subsubValue[$activeLang]
+                                                                    : (isset($subsubValue[$config['default_language']])
+                                                                        ? $subsubValue[$config['default_language']]
+                                                                        : '');
+                                                            }
+                                                        }
+                                                    }
+                                                } else {
+                                                    $subValue = [];
+                                                }
+                                                continue;
+                                            }
                                             if (isset($multilanguageFields[$blockSlug]["$attrName-$subKey"])) {
                                                 if (gettype($subValue) == 'string') {
                                                     $subValue = [$activeLang => $subValue];
