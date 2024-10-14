@@ -1,0 +1,2 @@
+
+{!! isset($content) ? $content : '' !!}

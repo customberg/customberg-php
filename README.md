@@ -78,6 +78,7 @@ Enjoy !
 |          |                   |
 | -------- | ----------------- |
 | ✅       | A checkbox field  |
+| ✅       | A custom js field  |
 | &#x2610; | Switch field      |
 | &#x2610; | Radio field       |
 | &#x2610; | Slider field      |
@@ -86,6 +87,11 @@ Enjoy !
 | &#x2610; | Icon picker field |
 
 # Changelog:
+
+### v0.16 - 2024-10-14
+
+-   New field type: `custom` for custom js field with React.createElement
+-   Checkout [/example/app/Blocks/CustomField.php](https://github.com/customberg/customberg-php/blob/main/example/app/Blocks/CustomField.php) for an example with summernote for Backpack V5 (TODO: update to V6)
 
 ### v0.15 - 2024-09-26
 

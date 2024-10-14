@@ -4,6 +4,7 @@ const { InnerBlocks, RichText } = window.Laraberg.wordpress.blockEditor;
 const { ColorPicker, Popover, Button, Dashicon, DropdownMenu } = window.Laraberg.wordpress.components;
 const { withSelect } = window.Laraberg.wordpress.data;
 import ButtonUpload from './components/ButtonUpload';
+import CustomLoader from './components/CustomLoader';
 import CustombergPreviewBlock from './CustombergPreviewBlock';
 import Select from 'react-select';
 import { cloneDeep } from 'lodash';
@@ -292,6 +293,18 @@ window.CustombergEditFields = (block) => {
                         <div style={{ width: '100%', marginBottom: '0.5rem' }} className="customberg-field-color">
                             <label style={{ marginBottom: 0 }}>{field.label}</label>
                             <ColorPickerField value={value} onChange={onChange} />
+                        </div>
+                    );
+                }
+
+                if (field.type == 'custom') {
+                    return (
+                        <div style={{ width: '100%', marginBottom: '0.5rem' }} className="customberg-field-custom">
+                            <label style={{ marginBottom: 0 }}>{field.label}</label>
+                            <CustomLoader
+                                js={field.js}
+                                props={{ field: field, value: value, onChange: onChange, activeLang: activeLang }}
+                            />
                         </div>
                     );
                 }
