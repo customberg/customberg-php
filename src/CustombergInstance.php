@@ -229,10 +229,22 @@ class CustombergInstance
     }
 }
 
-function str_replace_limit($find, $replacement, $subject, $limit = 0)
-{
+function str_replace_limit($find, $replacement, $subject, $limit = 0) {
+    // If no limit is set, use regular str_replace
     if ($limit == 0) {
         return str_replace($find, $replacement, $subject);
     }
-    return preg_replace('/' . preg_quote($find, '/') . '/', $replacement, $subject, $limit);
+    $pos = 0; // Position to start searching
+    $count = 0; // Keep track of how many replacements we've made
+    while (($pos = strpos($subject, $find, $pos)) !== false) {
+        // Replace only up to the limit
+        if (++$count > $limit) {
+            break;
+        }
+        // Perform the replacement
+        $subject = substr_replace($subject, $replacement, $pos, strlen($find));
+        // Move the position forward by the length of the replacement
+        $pos += strlen($replacement);
+    }
+    return $subject;
 }

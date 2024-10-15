@@ -88,6 +88,10 @@ Enjoy !
 
 # Changelog:
 
+### v0.17 - 2024-10-15
+
+-   Replace str_replace_limit implementation because there is a character limit error
+
 ### v0.16 - 2024-10-14
 
 -   New field type: `custom` for custom js field with React.createElement
