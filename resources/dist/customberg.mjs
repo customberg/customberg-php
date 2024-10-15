@@ -8667,20 +8667,13 @@ window.CustombergEditFields = (u) => jC((i, r) => {
           }))
         }
       )), /* @__PURE__ */ Z.createElement("div", { class: "customberg-fields" }, u.fields.map((d, f) => /* @__PURE__ */ Z.createElement("div", { key: d.name + f, style: { padding: 4 } }, this.renderField(d, this.props.attributes[d.name], (h) => {
-        console.log(
-          "onchange",
-          {
-            value: h,
-            mm: d.multilanguage,
-            activeLang: a
-          }
-        ), d.multilanguage ? this.props.setAttributes({
+        d.multilanguage ? this.props.setAttributes({
           [d.name]: {
             ...this.props.attributes[d.name],
             [a]: h
           }
         }) : this.props.setAttributes({ [d.name]: h });
-      }), d.type != "repeatable" && d.hint ? /* @__PURE__ */ Z.createElement("div", { style: { marginBottom: ".5rem", marginTop: "-0.3rem", fontSize: "15px" } }, d.hint) : null, d.type != "repeatable" && d.hint_html ? /* @__PURE__ */ Z.createElement("div", { style: { marginBottom: ".5rem", marginTop: "-0.3rem", fontSize: "15px" }, dangerouslySetInnerHTML: { __html: d.hint_html } }) : null))), /* @__PURE__ */ Z.createElement("pre", null, JSON.stringify(this.props.attributes, null, 2))));
+      }), d.type != "repeatable" && d.hint ? /* @__PURE__ */ Z.createElement("div", { style: { marginBottom: ".5rem", marginTop: "-0.3rem", fontSize: "15px" } }, d.hint) : null, d.type != "repeatable" && d.hint_html ? /* @__PURE__ */ Z.createElement("div", { style: { marginBottom: ".5rem", marginTop: "-0.3rem", fontSize: "15px" }, dangerouslySetInnerHTML: { __html: d.hint_html } }) : null)))));
     }
     renderField(r, s, a) {
       let { activeLang: l } = this.props.attributes;
