@@ -5,9 +5,6 @@ ENV TERM=linux
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update; \
-    apt-get -y --no-install-recommends install software-properties-common; \
-    add-apt-repository ppa:openswoole/ppa -y; \
-    apt-get update; \
     apt-get -y --no-install-recommends install \
         php8.1-gd \
         php8.1-sqlite3; \

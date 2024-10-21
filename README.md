@@ -5,7 +5,7 @@ Demo GIF
 # Instalation
 
 ```bash
-composer require customberg/customberg-php:"*"
+composer require customberg/customberg-php
 ```
 
 Add vendor files to your project (CSS, JS, Config, Views):
@@ -54,6 +54,9 @@ Checkout [/example/app/Blocks/EverySingleField.php](https://github.com/customber
 After an update, get the latest assets using:
 
 ```bash
+# update source
+composer require customberg/customberg-php
+# update public assets
 php artisan vendor:publish --tag="customberg-assets" --force
 php artisan vendor:publish --provider="VanOns\Laraberg\LarabergServiceProvider" --tag="public" --force
 ```
@@ -64,9 +67,9 @@ php artisan vendor:publish --provider="VanOns\Laraberg\LarabergServiceProvider" 
 git clone https://github.com/customberg/customberg-php
 cd customberg-php/example
 docker compose up -d
-docker-compose exec php su app -c 'cd example; composer install'
-docker-compose exec php su app -c 'cd example; cp .env.example .env; php artisan key:generate'
-docker-compose exec nginx su app -c 'cd /app/example/public/; ln -s ../storage/app/public storage'
+docker compose exec php su app -c 'cd example; composer install'
+docker compose exec php su app -c 'cd example; cp .env.example .env; php artisan key:generate'
+docker compose exec nginx su app -c 'cd /app/example/public/; ln -s ../storage/app/public storage'
 ```
 
 Navigate to http://localhost:8084 and press login.
